@@ -6,7 +6,7 @@
 <title>Kartu Klasifikasi & Jejak Ekspedisi — Profil Kelas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --canopy-black:#08160F;
@@ -23,7 +23,7 @@
     --sunbeam:#F0C24B;
     --mist:#E8F3EA;
     --mist-dim:#B7CDBE;
-    --font-display:'Fraunces', serif;
+    --font-display:'DM Serif Display', serif;
     --font-body:'Work Sans', sans-serif;
     --font-mono:'Space Mono', monospace;
   }
@@ -50,7 +50,7 @@
   .firefly{
     position:absolute; width:5px; height:5px; border-radius:50%;
     background:var(--sunbeam);
-    box-shadow:0 0 8px 2px rgba(240,194,75,0.8);
+    box-shadow:none;
     animation:flicker 4.5s ease-in-out infinite;
     opacity:0.2;
   }
@@ -104,7 +104,6 @@
     border-color:var(--sunbeam);
     background:var(--fern);
     transform:translate(-50%,-50%) scale(1.35);
-    box-shadow:0 0 12px 2px rgba(240,194,75,0.5);
   }
   .trail-nav__tip{
     position:absolute;
@@ -552,9 +551,125 @@
     outline:3px solid var(--sunbeam);
     outline-offset:3px;
   }
+
+  /* Redesign: archive calendar language, with the expedition content kept intact. */
+  :root{
+    --canopy-black:#101918;
+    --canopy-dark:#172b2a;
+    --canopy-mid:#21423f;
+    --canopy-mid2:#2c5d56;
+    --fern:#d6e36f;
+    --fern-light:#edf3b0;
+    --parchment:#f5eddc;
+    --parchment-dark:#d9c9aa;
+    --ink:#182322;
+    --ink-soft:#58645d;
+    --toucan:#e56d4f;
+    --sunbeam:#f5c85b;
+    --mist:#f0f2e9;
+    --mist-dim:#b7c8bc;
+  }
+
+  body{
+    background-color:var(--canopy-black);
+    background-image:linear-gradient(120deg, rgba(214,227,111,.08), transparent 32%, rgba(229,109,79,.06));
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:linear-gradient(180deg, rgba(214,227,111,.04), transparent 36%);
+    z-index:0;
+  }
+  .fireflies{opacity:.28;}
+  .hero{
+    min-height:100vh;
+    align-items:stretch;
+    justify-content:center;
+    text-align:left;
+    padding:clamp(72px,10vw,120px) 24px 64px;
+  }
+  .hero > *:not(.vine-corner){width:min(1080px,100%); margin-left:auto; margin-right:auto;}
+  .hero__eyebrow{margin-bottom:20px; color:var(--fern);}
+  .hero__eyebrow::before{content:"ARCHIVE / 2026"; color:var(--sunbeam); font-size:10px;}
+  .hero__sign{
+    max-width:1080px;
+    padding:clamp(36px,7vw,88px) clamp(28px,7vw,92px) 48px;
+    border-radius:2px;
+    background-color:var(--toucan);
+    background-image:linear-gradient(135deg, rgba(255,255,255,.08), transparent 58%);
+    box-shadow:14px 14px 0 var(--sunbeam), 0 28px 60px rgba(0,0,0,.34);
+    transform:none;
+  }
+  .hero__sign::before,.hero__sign::after{display:none;}
+  .hero__title{
+    max-width:760px;
+    color:var(--canopy-black);
+    font-size:clamp(56px,12vw,152px);
+    line-height:.84;
+    letter-spacing:-.045em;
+    text-shadow:none;
+  }
+  .hero__subtitle{max-width:420px; color:var(--canopy-black); font-weight:600; line-height:1.5;}
+  .hero__scroll{align-items:flex-start; margin-top:44px; color:var(--fern-light);}
+  .hero__scroll span{color:var(--sunbeam);}
+  section{padding:clamp(88px,12vw,148px) 0 40px;}
+  .wrap{max-width:1080px;}
+  .eyebrow{color:var(--fern); letter-spacing:.16em;}
+  .eyebrow::before{content:"/"; color:var(--toucan); font-size:16px;}
+  h2{max-width:720px; font-size:clamp(38px,6vw,72px); line-height:.98; letter-spacing:-.035em;}
+  .lead{max-width:62ch; color:#c3d0c4; line-height:1.75;}
+  .card{
+    border-radius:2px;
+    transform:none;
+    padding:clamp(30px,5vw,58px);
+    border-top:10px solid var(--toucan);
+    box-shadow:14px 14px 0 rgba(214,227,111,.55), 0 30px 60px rgba(0,0,0,.28);
+  }
+  .tape{display:none;}
+  .card__top{border-bottom:1px solid var(--parchment-dark); padding-bottom:28px;}
+  .card__title{font-size:clamp(28px,4vw,44px); letter-spacing:-.025em;}
+  .stamp{border-radius:2px; border-style:solid; border-width:1px; background:var(--toucan); color:var(--canopy-black); transform:rotate(3deg);}
+  .stamp:hover{transform:rotate(3deg) scale(1.06);}
+  .row{grid-template-columns:minmax(130px, .45fr) 1fr; padding:20px 0;}
+  .row__value{font-size:clamp(19px,2.4vw,26px);}
+  .row--highlight .row__value{border-radius:0; background:var(--fern);}
+  .gallery{grid-template-columns:repeat(12,1fr); gap:44px 24px;}
+  .shot{grid-column:span 6;}
+  .shot:nth-child(3),.shot:nth-child(4){grid-column:span 3;}
+  .shot__frame{border-radius:2px; box-shadow:8px 8px 0 rgba(214,227,111,.24), 0 22px 35px rgba(0,0,0,.35);}
+  .shot:nth-child(1) .shot__frame,.shot:nth-child(2) .shot__frame,.shot:nth-child(3) .shot__frame,.shot:nth-child(4) .shot__frame{transform:none;}
+  .shot__frame:hover,.shot__frame:focus-visible{transform:translateY(-5px);}
+  .shot__cam{border-radius:0; background:var(--canopy-black); color:var(--sunbeam);}
+  .shot__time{border-radius:0; background:var(--canopy-black); color:var(--fern-light);}
+  .shot__caption{font-family:var(--font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--mist-dim);}
+  .shot--soon .shot__frame{filter:none; opacity:.72;}
+  .shot__soon{border-radius:0; border-color:var(--fern); color:var(--fern-light);}
+  .more-btn{border-radius:0; background:var(--fern); padding:18px 24px; box-shadow:8px 8px 0 var(--toucan); color:var(--canopy-black);}
+  .more-btn:hover{transform:translate(-3px,-3px); box-shadow:11px 11px 0 var(--toucan);}
+  footer{padding-top:100px;}
+  .totop{border-radius:2px; background:var(--toucan); color:var(--canopy-black);}
+  @media (max-width:700px){
+    .hero{padding-top:88px;}
+    .hero__sign{box-shadow:8px 8px 0 var(--sunbeam);}
+    .card{box-shadow:8px 8px 0 rgba(214,227,111,.55), 0 22px 40px rgba(0,0,0,.25);}
+    .gallery{display:grid; grid-template-columns:1fr; gap:34px;}
+    .shot,.shot:nth-child(3),.shot:nth-child(4){grid-column:auto;}
+    .shot__frame:hover,.shot__frame:focus-visible{transform:none;}
+  }
 </style>
 </head>
 <body>
+
+<!--
+THESIS: Turn the class profile into a memorable seasonal archive, refusing the generic centered hero and card grid.
+OWN-WORLD: Oxidized coral, ink-black grid paper, leaf green and yellow form a printed research-calendar system.
+STORY: Visitors recognize X.2 first, scan its verified record, then browse real and upcoming expedition memories.
+FIRST VIEWPORT: A full-height coral archive cover leads with oversized X.2 type, a dated label, and a direct scroll cue.
+FORM: Advertising wall calendar, assigned direction 3, seed 4fb3b8b2.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying their provenance
+-->
 
 <div class="fireflies" id="fireflies"></div>
 
@@ -656,7 +771,7 @@
         <div class="shot__caption">Momen di dalam kelas</div>
       </div>
 
-<div class="shot shot--soon">
+      <div class="shot shot--soon">
         <div class="shot__frame">
           <div class="shot__bg g3">🔒</div>
           <div class="shot__cam"><span class="rec-dot rec-dot--idle"></span>CAM 02</div>
