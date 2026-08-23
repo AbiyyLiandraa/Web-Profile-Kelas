@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kartu Klasifikasi & Jejak Ekspedisi — Profil Kelas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canopy-black:#08160F;
+    --canopy-dark:#0B2818;
+    --canopy-mid:#123A24;
+    --canopy-mid2:#1B5230;
+    --fern:#57B37F;
+    --fern-light:#9BDDB6;
+    --parchment:#F3E9D0;
+    --parchment-dark:#E4D5A8;
+    --ink:#2B1D0E;
+    --ink-soft:#5B4A30;
+    --toucan:#E2661C;
+    --sunbeam:#F0C24B;
+    --mist:#E8F3EA;
+    --mist-dim:#B7CDBE;
+    --font-display:'DM Serif Display', serif;
+    --font-body:'Work Sans', sans-serif;
+    --font-mono:'Space Mono', monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -5%, rgba(240,194,75,0.16), transparent 60%),
+      linear-gradient(180deg, var(--canopy-dark) 0%, var(--canopy-mid) 45%, var(--canopy-black) 100%);
+    color:var(--mist);
+    font-family:var(--font-body);
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- ambient fireflies ---------- */
+  .fireflies{position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden; transition:transform 0.4s ease-out;}
+  .firefly{
+    position:absolute; width:5px; height:5px; border-radius:50%;
+    background:var(--sunbeam);
+    box-shadow:none;
+    animation:flicker 4.5s ease-in-out infinite;
+    opacity:0.2;
+  }
+  @keyframes flicker{
+    0%,100%{opacity:0.15; transform:translateY(0);}
+    50%{opacity:0.85; transform:translateY(-14px);}
+  }
+
+  /* ---------- trail scroll nav ---------- */
+  .trail-nav{
+    position:fixed;
+    left:32px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:6;
+    width:20px;
+    height:220px;
+  }
+  .trail-nav__line{
+    position:absolute;
+    left:50%; top:0; bottom:0;
+    width:2px;
+    background:rgba(183,205,190,0.22);
+    transform:translateX(-50%);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .trail-nav__fill{
+    position:absolute;
+    left:0; bottom:0; width:100%; height:0%;
+    background:linear-gradient(180deg,var(--fern-light),var(--fern));
+    transition:height 0.15s linear;
+  }
+  .trail-nav__node{
+    position:absolute;
+    left:50%;
+    width:13px; height:13px;
+    border-radius:50%;
+    background:var(--canopy-mid);
+    border:2px solid var(--mist-dim);
+    transform:translate(-50%,-50%) scale(1);
+    cursor:pointer;
+    padding:0; margin:0;
+    appearance:none; -webkit-appearance:none;
+    transition:transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+  .trail-nav__node:nth-child(2){top:0%;}
+  .trail-nav__node:nth-child(3){top:33.33%;}
+  .trail-nav__node:nth-child(4){top:66.66%;}
+  .trail-nav__node:nth-child(5){top:100%;}
+  .trail-nav__node.active{
+    border-color:var(--sunbeam);
+    background:var(--fern);
+    transform:translate(-50%,-50%) scale(1.35);
+  }
+  .trail-nav__tip{
+    position:absolute;
+    left:22px; top:50%;
+    transform:translateY(-50%);
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--mist);
+    background:rgba(10,40,24,0.9);
+    padding:4px 9px;
+    border-radius:4px;
+    white-space:nowrap;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.2s ease;
+  }
+  .trail-nav__node:hover .trail-nav__tip,
+  .trail-nav__node:focus-visible .trail-nav__tip{opacity:1;}
+  @media (max-width:900px){ .trail-nav{display:none;} }
+
+  /* ---------- shared layout ---------- */
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px; position:relative; z-index:2;}
+  section{padding:120px 0 40px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--fern-light);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:"◆"; color:var(--toucan); font-size:9px;}
+  h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(30px,5vw,46px);
+    margin:0 0 16px;
+    color:var(--mist);
+    letter-spacing:-0.01em;
+  }
+  .lead{
+    font-size:16px;
+    line-height:1.7;
+    color:var(--mist-dim);
+    max-width:52ch;
+    margin:0 0 52px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:92vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    padding:60px 24px 40px;
+  }
+  .vine-corner{position:absolute; top:0; width:180px; height:260px; opacity:0.9; z-index:1;}
+  .vine-corner.left{left:0;}
+  .vine-corner.right{right:0; transform:scaleX(-1);}
+  @media (max-width:640px){ .vine-corner{width:110px; height:170px;} }
+
+  .hero__eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.24em;
+    text-transform:uppercase;
+    color:var(--sunbeam);
+    margin-bottom:26px;
+    z-index:2;
+  }
+
+  .hero__sign{
+    position:relative;
+    z-index:2;
+    background:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.06) 0 3px, transparent 3px 9px),
+      linear-gradient(160deg,#7A5330,#5C3D22 55%,#4A3119);
+    border-radius:14px;
+    padding:44px clamp(28px,7vw,72px);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.7), inset 0 0 0 3px rgba(0,0,0,0.25);
+    max-width:720px;
+    transition:transform 0.2s ease-out;
+    will-change:transform;
+  }
+  .hero__sign::before,.hero__sign::after{
+    content:"";
+    position:absolute;
+    top:-46px;
+    width:3px; height:50px;
+    background:linear-gradient(#4A3119,#8a6a3f);
+    border-radius:2px;
+  }
+  .hero__sign::before{left:14%; transform:rotate(-6deg);}
+  .hero__sign::after{right:14%; transform:rotate(6deg);}
+
+  .hero__title{
+    font-family:var(--font-display);
+    font-weight:900;
+    font-size:clamp(34px,7vw,64px);
+    line-height:1.05;
+    color:#F6E9C9;
+    text-shadow:0 2px 0 rgba(0,0,0,0.5), 0 -1px 0 rgba(255,255,255,0.08);
+    margin:0 0 14px;
+    letter-spacing:0.01em;
+  }
+  .hero__subtitle{
+    font-family:var(--font-body);
+    font-size:15px;
+    color:#D9C7A0;
+    letter-spacing:0.02em;
+  }
+
+  .hero__scroll{
+    margin-top:44px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--mist-dim);
+    letter-spacing:0.1em;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    z-index:2;
+  }
+  .hero__scroll span{animation:bob 2.2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);}}
+
+  /* ---------- SECTION 1: classification card ---------- */
+  .card{
+    position:relative;
+    background:var(--parchment);
+    color:var(--ink);
+    border-radius:6px;
+    padding:clamp(28px,5vw,52px) clamp(24px,6vw,56px) 40px;
+    box-shadow:0 40px 70px -30px rgba(0,0,0,0.65);
+    transform:rotate(-0.6deg);
+  }
+  .tape{
+    position:absolute; top:-14px; width:86px; height:28px;
+    background:rgba(240,194,75,0.55);
+    border:1px solid rgba(0,0,0,0.05);
+    box-shadow:0 3px 6px rgba(0,0,0,0.25);
+  }
+  .tape.l{left:8%; transform:rotate(-8deg);}
+  .tape.r{right:8%; transform:rotate(6deg);}
+
+  .card__top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    border-bottom:2px dashed var(--parchment-dark);
+    padding-bottom:20px;
+    margin-bottom:8px;
+  }
+  .card__kicker{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .card__title{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:26px;
+    margin:6px 0 0;
+    color:var(--ink);
+  }
+  .stamp-wrap{flex:0 0 auto; position:relative;}
+  .stamp{
+    width:92px; height:92px;
+    border:2.5px dashed var(--toucan);
+    border-radius:50%;
+    background:transparent;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    transform:rotate(-11deg);
+    color:var(--toucan);
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    line-height:1.3;
+    text-transform:uppercase;
+    cursor:pointer;
+    padding:0; margin:0;
+    appearance:none; -webkit-appearance:none;
+    transition:transform 0.15s ease;
+  }
+  .stamp:hover{transform:rotate(-11deg) scale(1.06);}
+  @keyframes thump{
+    0%{transform:rotate(-11deg) scale(1);}
+    45%{transform:rotate(-11deg) scale(1.22);}
+    100%{transform:rotate(-11deg) scale(1);}
+  }
+  .stamp.thump{animation:thump 0.4s ease;}
+  .stamp__note{
+    position:absolute;
+    top:100%; right:0;
+    margin-top:10px;
+    background:var(--ink);
+    color:var(--parchment);
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.03em;
+    padding:9px 13px;
+    border-radius:6px;
+    width:170px;
+    text-align:left;
+    line-height:1.5;
+    opacity:0;
+    transform:translateY(-6px);
+    pointer-events:none;
+    transition:opacity 0.25s ease, transform 0.25s ease;
+    z-index:3;
+  }
+  .stamp__note.show{opacity:1; transform:translateY(0);}
+
+  .rows{margin-top:12px;}
+  .row{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:16px;
+    align-items:baseline;
+    padding:16px 0;
+    border-bottom:1px solid var(--parchment-dark);
+  }
+  .row:last-child{border-bottom:none;}
+  .row__label{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .row__value{
+    font-family:var(--font-display);
+    font-size:19px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .row--highlight .row__value{
+    display:inline-block;
+    background:var(--fern);
+    color:#0A2818;
+    padding:3px 12px;
+    border-radius:4px;
+    font-weight:700;
+  }
+  .counter{font-variant-numeric:tabular-nums;}
+
+  @media (max-width:560px){
+    .row{grid-template-columns:1fr;}
+  }
+
+  /* ---------- SECTION 2: gallery / trail cam ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+    gap:34px 26px;
+  }
+  .shot{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .shot__frame{
+    position:relative;
+    aspect-ratio:4/3;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 20px 40px -18px rgba(0,0,0,0.75);
+    border:1px solid rgba(255,255,255,0.06);
+    transition:transform 0.35s ease;
+    cursor:pointer;
+  }
+  .shot:nth-child(1) .shot__frame{transform:rotate(-2deg);}
+  .shot:nth-child(2) .shot__frame{transform:rotate(1.5deg);}
+  .shot:nth-child(3) .shot__frame{transform:rotate(-1deg);}
+  .shot:nth-child(4) .shot__frame{transform:rotate(2deg);}
+  .shot__frame:hover{transform:rotate(0deg) scale(1.02);}
+  .shot__frame:focus-visible{transform:rotate(0deg) scale(1.02);}
+
+  .shot__bg{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    font-size:54px;
+    opacity:0.4;
+    filter:saturate(0.9);
+  }
+  .g1{background:linear-gradient(150deg,#1B5230,#0B2818);}
+  .g3{background:linear-gradient(150deg,#264A2C,#0E2A1B);}
+  .g5{background:linear-gradient(150deg,#1E3B2E,#0A1E14);}
+  .g6{background:linear-gradient(150deg,#33421F,#12240F);}
+
+  .shot__cam{
+    position:absolute; top:10px; left:10px;
+    display:flex; align-items:center; gap:6px;
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:#ff5c5c;
+    background:rgba(0,0,0,0.45);
+    padding:3px 8px;
+    border-radius:3px;
+    letter-spacing:0.05em;
+  }
+  .rec-dot{
+    width:7px; height:7px; border-radius:50%;
+    background:#ff5c5c;
+    animation:blink 1.4s ease-in-out infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1;} 50%{opacity:0.25;}}
+
+  .shot__time{
+    position:absolute; bottom:8px; right:10px;
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:#d8ffe4;
+    background:rgba(0,0,0,0.45);
+    padding:2px 7px;
+    border-radius:3px;
+  }
+  .shot__flash{
+    position:absolute; inset:0;
+    background:#fff;
+    opacity:0;
+    pointer-events:none;
+  }
+  .shot__caught{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(8,22,15,0.78);
+    color:var(--sunbeam);
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.25s ease;
+  }
+  .shot__frame.flash .shot__flash{animation:shutter 0.35s ease-out;}
+  .shot__frame.flash .shot__caught{opacity:1;}
+  @keyframes shutter{0%{opacity:0.85;} 100%{opacity:0;}}
+
+  .shot__caption{
+    font-family:var(--font-body);
+    font-size:14px;
+    color:var(--mist-dim);
+    padding:0 2px;
+  }
+
+  /* ---------- coming soon shots ---------- */
+  .shot--soon .shot__frame{cursor:default; filter:grayscale(0.4) brightness(0.8);}
+  .shot--soon .shot__bg{opacity:0.2;}
+  .shot--soon:nth-child(2) .shot__frame:hover{transform:rotate(1.5deg);}
+  .shot--soon:nth-child(3) .shot__frame:hover{transform:rotate(-1deg);}
+  .shot--soon:nth-child(4) .shot__frame:hover{transform:rotate(2deg);}
+  .rec-dot--idle{background:var(--mist-dim); animation:none;}
+  .shot__soon{
+    position:absolute; inset:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--mist-dim);
+    background:rgba(8,22,15,0.55);
+    border:1.5px dashed rgba(183,205,190,0.4);
+    border-radius:6px;
+  }
+
+  .gallery__more{
+    text-align:center;
+    margin-top:52px;
+  }
+  .more-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:#0A2818;
+    background:var(--sunbeam);
+    padding:15px 28px;
+    border-radius:6px;
+    box-shadow:0 16px 30px -12px rgba(0,0,0,0.6);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .more-btn:hover{transform:translateY(-3px); box-shadow:0 20px 36px -12px rgba(0,0,0,0.7);}
+  .more-btn__arrow{transition:transform 0.2s ease;}
+  .more-btn:hover .more-btn__arrow{transform:translateX(4px);}
+  .more-btn__note{
+    margin-top:14px;
+    font-size:13px;
+    color:var(--mist-dim);
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    text-align:center;
+    padding:70px 24px 90px;
+    color:var(--mist-dim);
+    font-size:13px;
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- back to top ---------- */
+  .totop{
+    position:fixed;
+    bottom:24px; right:24px;
+    width:46px; height:46px;
+    border-radius:50%;
+    background:var(--fern);
+    color:#0A2818;
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px;
+    text-decoration:none;
+    box-shadow:0 10px 24px -8px rgba(0,0,0,0.6);
+    z-index:5;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.3s ease, transform 0.2s ease;
+  }
+  .totop.show{opacity:1; pointer-events:auto;}
+  .totop:hover{transform:translateY(-3px);}
+  .totop:focus-visible, a:focus-visible, button:focus-visible{
+    outline:3px solid var(--sunbeam);
+    outline-offset:3px;
+  }
+
+  /* Redesign: archive calendar language, with the expedition content kept intact. */
+  :root{
+    --canopy-black:#101918;
+    --canopy-dark:#172b2a;
+    --canopy-mid:#21423f;
+    --canopy-mid2:#2c5d56;
+    --fern:#d6e36f;
+    --fern-light:#edf3b0;
+    --parchment:#f5eddc;
+    --parchment-dark:#d9c9aa;
+    --ink:#182322;
+    --ink-soft:#58645d;
+    --toucan:#e56d4f;
+    --sunbeam:#f5c85b;
+    --mist:#f0f2e9;
+    --mist-dim:#b7c8bc;
+  }
+
+  body{
+    background-color:var(--canopy-black);
+    background-image:linear-gradient(120deg, rgba(214,227,111,.08), transparent 32%, rgba(229,109,79,.06));
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:linear-gradient(180deg, rgba(214,227,111,.04), transparent 36%);
+    z-index:0;
+  }
+  .fireflies{opacity:.28;}
+  .hero{
+    min-height:100vh;
+    align-items:stretch;
+    justify-content:center;
+    text-align:left;
+    padding:clamp(72px,10vw,120px) 24px 64px;
+  }
+  .hero > *:not(.vine-corner){width:min(1080px,100%); margin-left:auto; margin-right:auto;}
+  .hero__eyebrow{margin-bottom:20px; color:var(--fern);}
+  .hero__eyebrow::before{content:"ARCHIVE / 2026"; color:var(--sunbeam); font-size:10px;}
+  .hero__sign{
+    max-width:1080px;
+    padding:clamp(36px,7vw,88px) clamp(28px,7vw,92px) 48px;
+    border-radius:2px;
+    background-color:var(--toucan);
+    background-image:linear-gradient(135deg, rgba(255,255,255,.08), transparent 58%);
+    box-shadow:14px 14px 0 var(--sunbeam), 0 28px 60px rgba(0,0,0,.34);
+    transform:none;
+  }
+  .hero__sign::before,.hero__sign::after{display:none;}
+  .hero__title{
+    max-width:760px;
+    color:var(--canopy-black);
+    font-size:clamp(56px,12vw,152px);
+    line-height:.84;
+    letter-spacing:-.045em;
+    text-shadow:none;
+  }
+  .hero__subtitle{max-width:420px; color:var(--canopy-black); font-weight:600; line-height:1.5;}
+  .hero__scroll{align-items:flex-start; margin-top:44px; color:var(--fern-light);}
+  .hero__scroll span{color:var(--sunbeam);}
+  section{padding:clamp(88px,12vw,148px) 0 40px;}
+  .wrap{max-width:1080px;}
+  .eyebrow{color:var(--fern); letter-spacing:.16em;}
+  .eyebrow::before{content:"/"; color:var(--toucan); font-size:16px;}
+  h2{max-width:720px; font-size:clamp(38px,6vw,72px); line-height:.98; letter-spacing:-.035em;}
+  .lead{max-width:62ch; color:#c3d0c4; line-height:1.75;}
+  .card{
+    border-radius:2px;
+    transform:none;
+    padding:clamp(30px,5vw,58px);
+    border-top:10px solid var(--toucan);
+    box-shadow:14px 14px 0 rgba(214,227,111,.55), 0 30px 60px rgba(0,0,0,.28);
+  }
+  .tape{display:none;}
+  .card__top{border-bottom:1px solid var(--parchment-dark); padding-bottom:28px;}
+  .card__title{font-size:clamp(28px,4vw,44px); letter-spacing:-.025em;}
+  .stamp{border-radius:2px; border-style:solid; border-width:1px; background:var(--toucan); color:var(--canopy-black); transform:rotate(3deg);}
+  .stamp:hover{transform:rotate(3deg) scale(1.06);}
+  .row{grid-template-columns:minmax(130px, .45fr) 1fr; padding:20px 0;}
+  .row__value{font-size:clamp(19px,2.4vw,26px);}
+  .row--highlight .row__value{border-radius:0; background:var(--fern);}
+  .gallery{grid-template-columns:repeat(12,1fr); gap:44px 24px;}
+  .shot{grid-column:span 6;}
+  .shot:nth-child(3),.shot:nth-child(4){grid-column:span 3;}
+  .shot__frame{border-radius:2px; box-shadow:8px 8px 0 rgba(214,227,111,.24), 0 22px 35px rgba(0,0,0,.35);}
+  .shot:nth-child(1) .shot__frame,.shot:nth-child(2) .shot__frame,.shot:nth-child(3) .shot__frame,.shot:nth-child(4) .shot__frame{transform:none;}
+  .shot__frame:hover,.shot__frame:focus-visible{transform:translateY(-5px);}
+  .shot__cam{border-radius:0; background:var(--canopy-black); color:var(--sunbeam);}
+  .shot__time{border-radius:0; background:var(--canopy-black); color:var(--fern-light);}
+  .shot__caption{font-family:var(--font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--mist-dim);}
+  .shot--soon .shot__frame{filter:none; opacity:.72;}
+  .shot__soon{border-radius:0; border-color:var(--fern); color:var(--fern-light);}
+  .more-btn{border-radius:0; background:var(--fern); padding:18px 24px; box-shadow:8px 8px 0 var(--toucan); color:var(--canopy-black);}
+  .more-btn:hover{transform:translate(-3px,-3px); box-shadow:11px 11px 0 var(--toucan);}
+  footer{padding-top:100px;}
+  .totop{border-radius:2px; background:var(--toucan); color:var(--canopy-black);}
+  .site-nav{position:fixed; top:20px; left:50%; transform:translateX(-50%); z-index:10; display:flex; align-items:center; gap:4px; padding:5px; background:rgba(16,25,24,.9); border:1px solid rgba(237,243,176,.3);}
+  .site-nav__link{padding:10px 14px; color:var(--mist-dim); font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; transition:background .2s ease, color .2s ease;}
+  .site-nav__link:hover,.site-nav__link[aria-current="page"]{background:var(--fern); color:var(--canopy-black);}
+  .member-intro{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:36px;}
+  .member-count{font-family:var(--font-display); font-size:clamp(42px,6vw,68px); line-height:.9; color:var(--sunbeam); white-space:nowrap;}
+  .member-count small{display:block; margin-top:8px; font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--mist-dim);}
+  .member-board{display:grid; grid-template-columns:repeat(5,1fr); border-top:1px solid rgba(237,243,176,.35); border-left:1px solid rgba(237,243,176,.35);}
+  .member-slot{min-height:118px; padding:18px; border-right:1px solid rgba(237,243,176,.35); border-bottom:1px solid rgba(237,243,176,.35); display:flex; flex-direction:column; justify-content:space-between; background:rgba(33,66,63,.38);}
+  .member-slot:nth-child(3n){background:rgba(229,109,79,.12);}
+  .member-slot__number{font-family:var(--font-mono); font-size:11px; color:var(--sunbeam);}
+  .member-slot__name{font-family:var(--font-display); font-size:21px; color:var(--mist);}
+  .member-slot__status{font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--mist-dim);}
+  .homework-list{display:grid; gap:14px;}
+  .homework-item{display:grid; grid-template-columns:72px 1fr auto; align-items:center; gap:24px; padding:22px 24px; border:1px solid rgba(237,243,176,.35); background:rgba(33,66,63,.38);}
+  .homework-item:nth-child(2){background:rgba(229,109,79,.12);}
+  .homework-item__number{font-family:var(--font-display); font-size:42px; line-height:1; color:var(--sunbeam);}
+  .homework-item__title{font-family:var(--font-display); font-size:24px; color:var(--mist);}
+  .homework-item__meta{margin-top:6px; font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--mist-dim);}
+  .homework-item__status{padding:8px 10px; font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--canopy-black); background:var(--fern);}
+  .homework-note{margin-top:18px; font-family:var(--font-mono); font-size:11px; color:var(--mist-dim);}
+  @media (max-width:700px){
+    .member-intro{align-items:flex-start; flex-direction:column;}
+    .member-board{grid-template-columns:repeat(2,1fr);}
+    .member-slot{min-height:104px; padding:14px;}
+    .homework-item{grid-template-columns:46px 1fr; gap:14px; padding:18px;}
+    .homework-item__number{font-size:32px;}
+    .homework-item__title{font-size:20px;}
+    .homework-item__status{grid-column:2; justify-self:start;}
+  }
+  @media (max-width:700px){
+    .hero{padding-top:88px;}
+    .hero__sign{box-shadow:8px 8px 0 var(--sunbeam);}
+    .card{box-shadow:8px 8px 0 rgba(214,227,111,.55), 0 22px 40px rgba(0,0,0,.25);}
+    .gallery{display:grid; grid-template-columns:1fr; gap:34px;}
+    .shot,.shot:nth-child(3),.shot:nth-child(4){grid-column:auto;}
+    .shot__frame:hover,.shot__frame:focus-visible{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<!--
+THESIS: Turn the class profile into a memorable seasonal archive, refusing the generic centered hero and card grid.
+OWN-WORLD: Oxidized coral, ink-black grid paper, leaf green and yellow form a printed research-calendar system.
+STORY: Visitors recognize X.2 first, scan its verified record, then browse real and upcoming expedition memories.
+FIRST VIEWPORT: A full-height coral archive cover leads with oversized X.2 type, a dated label, and a direct scroll cue.
+FORM: Advertising wall calendar, assigned direction 3, seed 4fb3b8b2.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying their provenance
+-->
+
+<div class="fireflies" id="fireflies"></div>
+
+<nav class="site-nav" aria-label="Navigasi utama">
+  <a class="site-nav__link" href="social-media.html">Social Media</a>
+  <a class="site-nav__link" href="index.html" aria-current="page">Profile</a>
+  <a class="site-nav__link" href="homework.html">Homework</a>
+</nav>
+
+<nav class="trail-nav" aria-label="Navigasi ekspedisi">
+  <div class="trail-nav__line"><div class="trail-nav__fill" id="trailFill"></div></div>
+  <button type="button" class="trail-nav__node" data-target="#beranda" aria-label="Ke Beranda"><span class="trail-nav__tip">Beranda</span></button>
+  <button type="button" class="trail-nav__node" data-target="#klasifikasi" aria-label="Ke Klasifikasi"><span class="trail-nav__tip">Klasifikasi</span></button>
+  <button type="button" class="trail-nav__node" data-target="#member" aria-label="Ke Member"><span class="trail-nav__tip">Member</span></button>
+  <button type="button" class="trail-nav__node" data-target="#ekspedisi" aria-label="Ke Ekspedisi"><span class="trail-nav__tip">Ekspedisi</span></button>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="beranda">
+  <svg class="vine-corner left" viewBox="0 0 180 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0 C 40 40, 20 90, 60 120 C 100 150, 70 200, 110 260" stroke="#3E7A50" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="30" cy="35" rx="16" ry="9" fill="#57B37F" transform="rotate(-30 30 35)"/>
+    <ellipse cx="55" cy="95" rx="18" ry="10" fill="#4CA06E" transform="rotate(25 55 95)"/>
+    <ellipse cx="75" cy="155" rx="15" ry="9" fill="#57B37F" transform="rotate(-15 75 155)"/>
+    <ellipse cx="100" cy="215" rx="17" ry="10" fill="#4CA06E" transform="rotate(30 100 215)"/>
+  </svg>
+  <svg class="vine-corner right" viewBox="0 0 180 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0 C 40 40, 20 90, 60 120 C 100 150, 70 200, 110 260" stroke="#3E7A50" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="30" cy="35" rx="16" ry="9" fill="#57B37F" transform="rotate(-30 30 35)"/>
+    <ellipse cx="55" cy="95" rx="18" ry="10" fill="#4CA06E" transform="rotate(25 55 95)"/>
+    <ellipse cx="75" cy="155" rx="15" ry="9" fill="#57B37F" transform="rotate(-15 75 155)"/>
+    <ellipse cx="100" cy="215" rx="17" ry="10" fill="#4CA06E" transform="rotate(30 100 215)"/>
+  </svg>
+
+  <div class="hero__eyebrow">🌿 Laporan Ekspedisi Hutan Sekolah</div>
+  <div class="hero__sign" id="heroSign">
+    <div class="hero__title">KELAS X.2</div>
+    <div class="hero__subtitle">Kartu klasifikasi spesies &amp; jejak ekspedisi resmi</div>
+  </div>
+  <div class="hero__scroll"><span>▾</span>gulir untuk menjelajah</div>
+</section>
+
+<!-- ================= SECTION 1: PROFIL ================= -->
+<section id="klasifikasi">
+  <div class="wrap reveal">
+    <div class="eyebrow">Lembar Observasi</div>
+    <h2>Spesies yang Ditemukan</h2>
+    <p class="lead">Setelah pengamatan mendalam di habitat aslinya X.2, tim peneliti berhasil mengidentifikasi dan mencatat klasifikasi lengkap spesies berikut.</p>
+
+    <div class="card">
+      <div class="tape l"></div>
+      <div class="tape r"></div>
+      <div class="card__top">
+        <div>
+          <div class="card__kicker">Kartu Klasifikasi No. 001</div>
+          <div class="card__title">Formulir Identitas</div>
+        </div>
+        <div class="stamp-wrap">
+          <button type="button" class="stamp" id="verifyStamp" aria-expanded="false">terverifikasi ✓</button>
+          <div class="stamp__note" id="stampNote" role="status">Diverifikasi oleh Tim Ekspedisi X.2 🌿</div>
+        </div>
+      </div>
+
+      <div class="rows">
+        <div class="row">
+          <div class="row__label">Kerajaan</div>
+          <div class="row__value">SMAN 1 Kota Depok</div>
+        </div>
+        <div class="row row--highlight">
+          <div class="row__label">Kelas</div>
+          <div class="row__value">X.2</div>
+        </div>
+        <div class="row">
+          <div class="row__label">Wali Kelas</div>
+          <div class="row__value">Bu Ratna</div>
+        </div>
+        <div class="row">
+          <div class="row__label">Musim Ekspedisi</div>
+          <div class="row__value">2026/2027</div>
+        </div>
+        <div class="row">
+          <div class="row__label">Populasi</div>
+          <div class="row__value"><span class="counter" data-target="30">0</span> siswa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MEMBER ================= -->
+<section id="member">
+  <div class="wrap reveal">
+    <div class="eyebrow">Daftar Anggota</div>
+    <div class="member-intro">
+      <div>
+        <h2>Member X.2</h2>
+        <p class="lead">Lembar Ekspedisi menyatakan ada nya 30 Spesies yang tercatat.</p>
+      </div>
+      <div class="member-count">30<small>spesies terdata</small></div>
+    </div>
+    <div class="member-board" aria-label="Indeks 30 anggota kelas X.2">
+      <div class="member-slot"><span class="member-slot__number">01</span><span class="member-slot__name">Ilham</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">02</span><span class="member-slot__name">Aisha</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">03</span><span class="member-slot__name">Qiya</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">04</span><span class="member-slot__name">Aqilla</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">05</span><span class="member-slot__name">Askhana</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">06</span><span class="member-slot__name">Cenna</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">07</span><span class="member-slot__name">Talita</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">08</span><span class="member-slot__name">Chris</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">09</span><span class="member-slot__name">Aim</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">10</span><span class="member-slot__name">Fahman</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">11</span><span class="member-slot__name">Fajar</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">12</span><span class="member-slot__name">Figlia</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">13</span><span class="member-slot__name">Firly</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">14</span><span class="member-slot__name">Gilar</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">15</span><span class="member-slot__name">Apis</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">16</span><span class="member-slot__name">Jehan</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">17</span><span class="member-slot__name">Dastan</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">18</span><span class="member-slot__name">Keisha</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">19</span><span class="member-slot__name">Manon</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">20</span><span class="member-slot__name">Dimas</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">21</span><span class="member-slot__name">Lian</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">22</span><span class="member-slot__name">Irul</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">23</span><span class="member-slot__name">Faric</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">24</span><span class="member-slot__name">Fadil</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">25</span><span class="member-slot__name">Nabila</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">26</span><span class="member-slot__name">Hafsha</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">27</span><span class="member-slot__name">Sean</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">28</span><span class="member-slot__name">Qonita</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">29</span><span class="member-slot__name">Tsabitah</span><span class="member-slot__status">Absen 10-2</span></div>
+      <div class="member-slot"><span class="member-slot__number">30</span><span class="member-slot__name">Zharifah</span><span class="member-slot__status">Absen 10-2</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 2: GALERI ================= -->
+<section id="ekspedisi">
+  <div class="wrap reveal">
+    <div class="eyebrow">Rekam Jejak</div>
+    <h2>Jejak Ekspedisi Kelas</h2>
+    <p class="lead">Kamera trail kami berhasil menangkap beberapa momen langka dari kawanan ini di alam liar. Klik sebuah bidikan untuk memicu rana kamera.</p>
+
+    <div class="gallery">
+      <div class="shot">
+        <div class="shot__frame" tabindex="0" role="button" aria-label="Picu kamera trail: Kegiatan Belajar">
+          <div class="shot__cam"><span class="rec-dot"></span>CAM 01</div>
+          <img src="fotocam1.jpg" alt="Kegiatan belajar di kelas X.2" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div class="shot__time">ISTIRAHAT</div>
+          <div class="shot__flash"></div>
+          <div class="shot__caught">📸 Tertangkap!</div>
+        </div>
+        <div class="shot__caption">Momen di dalam kelas</div>
+      </div>
+
+      <div class="shot">
+        <div class="shot__frame" tabindex="0" role="button" aria-label="Picu kamera trail: Kegiatan 17an">
+          <div class="shot__cam"><span class="rec-dot"></span>CAM 02</div>
+          <img src="fotocam2.jpg" alt="Kegiatan 17an" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div class="shot__time">KEGIATAN 17AN</div>
+          <div class="shot__flash"></div>
+          <div class="shot__caught">📸 Tertangkap!</div>
+        </div>
+        <div class="shot__caption">Momen saat 17an</div>
+      </div>
+
+      <div class="shot shot--soon">
+        <div class="shot__frame">
+          <div class="shot__bg g5">🔒</div>
+          <div class="shot__cam"><span class="rec-dot rec-dot--idle"></span>CAM 03</div>
+          <div class="shot__soon">Segera Hadir</div>
+        </div>
+        <div class="shot__caption">Foto menyusul</div>
+      </div>
+
+      <div class="shot shot--soon">
+        <div class="shot__frame">
+          <div class="shot__bg g6">🔒</div>
+          <div class="shot__cam"><span class="rec-dot rec-dot--idle"></span>CAM 04</div>
+          <div class="shot__soon">Segera Hadir</div>
+        </div>
+        <div class="shot__caption">Foto menyusul</div>
+      </div>
+    </div>
+
+    <div class="gallery__more">
+      <a href="https://drive.google.com/drive/u/0/folders/134lAMjyFlzvLF10y6uSA33dFxPX-OZRj" target="_blank" rel="noopener" class="more-btn">
+        Lihat Semua Foto di Google Drive
+        <span class="more-btn__arrow">→</span>
+      </a>
+      <div class="more-btn__note">Semua hasil jepretan ekspedisi kelas ada di sini</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>🌱 Dibuat untuk mendokumentasikan kisah X.2 Jungleland.</div>
+</footer>
+
+<a href="#beranda" class="totop" id="totop" aria-label="Kembali ke atas">🍃</a>
+
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // fireflies
+  const fireflyContainer = document.getElementById('fireflies');
+  const positions = [
+    [8,15],[22,60],[38,25],[55,70],[70,20],[85,55],[15,80],[92,35],[45,45],[63,90]
+  ];
+  positions.forEach(([x,y],i)=>{
+    const f = document.createElement('div');
+    f.className = 'firefly';
+    f.style.left = x + 'vw';
+    f.style.top = y + 'vh';
+    f.style.animationDelay = (i * 0.6) + 's';
+    fireflyContainer.appendChild(f);
+  });
+
+  // firefly cursor parallax
+  if(!reducedMotion){
+    document.addEventListener('mousemove', (e)=>{
+      const relX = (e.clientX / window.innerWidth - 0.5) * 2;
+      const relY = (e.clientY / window.innerHeight - 0.5) * 2;
+      fireflyContainer.style.transform = `translate(${relX * -10}px, ${relY * -8}px)`;
+    });
+  }
+
+  // hero sign tilt
+  const hero = document.querySelector('.hero');
+  const heroSign = document.getElementById('heroSign');
+  if(hero && heroSign && !reducedMotion){
+    hero.addEventListener('mousemove', (e)=>{
+      const rect = hero.getBoundingClientRect();
+      const relX = (e.clientX - rect.left) / rect.width - 0.5;
+      const relY = (e.clientY - rect.top) / rect.height - 0.5;
+      heroSign.style.transform = `rotate(${relX * 1.6}deg) translateY(${relY * 5}px)`;
+    });
+    hero.addEventListener('mouseleave', ()=>{ heroSign.style.transform = ''; });
+  }
+
+  // reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+  reveals.forEach(el=>io.observe(el));
+
+  // back to top visibility
+  const totop = document.getElementById('totop');
+  window.addEventListener('scroll', ()=>{
+    if(window.scrollY > 500){ totop.classList.add('show'); }
+    else{ totop.classList.remove('show'); }
+  });
+
+  // trail scroll-spy nav
+  const trailNav = document.querySelector('.trail-nav');
+  if(trailNav){
+    const trailFill = document.getElementById('trailFill');
+    const navNodes = Array.from(trailNav.querySelectorAll('.trail-nav__node'));
+
+    navNodes.forEach(node=>{
+      node.addEventListener('click', ()=>{
+        const target = document.querySelector(node.dataset.target);
+        if(target){ target.scrollIntoView({behavior: reducedMotion ? 'auto' : 'smooth', block:'start'}); }
+      });
+    });
+
+    const updateFill = ()=>{
+      const scrollable = document.body.scrollHeight - window.innerHeight;
+      const pct = scrollable > 0 ? Math.min(100, Math.max(0, (window.scrollY / scrollable) * 100)) : 0;
+      trailFill.style.height = pct + '%';
+    };
+    window.addEventListener('scroll', updateFill);
+    updateFill();
+
+    const sectionEls = ['#beranda','#klasifikasi','#member','#ekspedisi'].map(sel=>document.querySelector(sel));
+    const spy = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const idx = sectionEls.indexOf(entry.target);
+          navNodes.forEach(n=>n.classList.remove('active'));
+          if(navNodes[idx]) navNodes[idx].classList.add('active');
+        }
+      });
+    }, {threshold:0.4});
+    sectionEls.forEach(sec=>{ if(sec) spy.observe(sec); });
+  }
+
+  // animated population counter
+  const counters = document.querySelectorAll('.counter');
+  const counterIO = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10) || 0;
+        if(reducedMotion){
+          el.textContent = target;
+        } else {
+          const start = performance.now();
+          const dur = 900;
+          const step = (now)=>{
+            const p = Math.min(1, (now - start) / dur);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(eased * target);
+            if(p < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        }
+        counterIO.unobserve(el);
+      }
+    });
+  }, {threshold:0.6});
+  counters.forEach(c=>counterIO.observe(c));
+
+  // trail-cam shutter click
+  const shots = document.querySelectorAll('.shot__frame');
+  shots.forEach(frame=>{
+    const trigger = ()=>{
+      frame.classList.remove('flash');
+      void frame.offsetWidth;
+      frame.classList.add('flash');
+      clearTimeout(frame._flashTimer);
+      frame._flashTimer = setTimeout(()=>frame.classList.remove('flash'), 1100);
+    };
+    frame.addEventListener('click', trigger);
+    frame.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); trigger(); }
+    });
+  });
+
+  // interactive verification stamp
+  const stampBtn = document.getElementById('verifyStamp');
+  const stampNote = document.getElementById('stampNote');
+  if(stampBtn && stampNote){
+    stampBtn.addEventListener('click', ()=>{
+      stampBtn.classList.remove('thump');
+      void stampBtn.offsetWidth;
+      stampBtn.classList.add('thump');
+      const show = stampNote.classList.toggle('show');
+      stampBtn.setAttribute('aria-expanded', show);
+    });
+  }
+</script>
+<script src="1.js"></script>
+<script src="2.js"></script>
+
+</body>
+</html>
