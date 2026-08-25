@@ -3,49 +3,357 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Daftar tugas & ulangan Kelas X.2 SMAN 1 Kota Depok — 10 tugas terkurasi 26 Agu–1 Sep + 5 ulangan harian, status personal per siswa.">
+<meta name="theme-color" content="#0F201A">
+<meta name="color-scheme" content="light">
+<meta property="og:title" content="Homework · X.2">
+<meta property="og:description" content="Herbarium tugas X.2: 10 tugas + 5 ulangan, status tersimpan per nama.">
+<meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="logo.png">
-<title>Homework | Kelas X.2</title>
+<link rel="apple-touch-icon" href="logo.png">
+<title>Homework · X.2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#101918;--ink-soft:#b7c8bc;--paper:#f5eddc;--lime:#d6e36f;--coral:#e56d4f;--yellow:#f5c85b;--display:'DM Serif Display',serif;--body:'Work Sans',sans-serif;--mono:'Space Mono',monospace}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:linear-gradient(135deg,#101918 0%,#21423f 100%);color:#f0f2e9;font-family:var(--body)}
-.site-nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:4px;padding:5px;background:rgba(16,25,24,.9);border:1px solid rgba(237,243,176,.3)}.site-nav a{padding:10px 14px;color:var(--ink-soft);font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none}.site-nav a:hover,.site-nav a[aria-current=page]{background:var(--lime);color:var(--ink)}
-main{width:min(1080px,calc(100% - 48px));margin:0 auto;padding:170px 0 100px}.eyebrow{margin:0 0 18px;color:var(--lime);font:12px var(--mono);letter-spacing:.16em;text-transform:uppercase}.eyebrow::before{content:'/ ';color:var(--coral)}h1{max-width:750px;margin:0;color:var(--yellow);font:clamp(58px,10vw,132px)/.86 var(--display);letter-spacing:-.04em} .lead{max-width:620px;margin:28px 0 64px;color:var(--ink-soft);font-size:17px;line-height:1.7}
-.homework-list{display:grid;gap:14px}.homework-item{display:grid;grid-template-columns:80px 1fr auto auto;align-items:center;gap:18px;padding:24px;border:1px solid rgba(237,243,176,.35);background:rgba(33,66,63,.55)}.homework-item:nth-child(2){background:rgba(229,109,79,.16)}.homework-item.is-complete{opacity:.65}.number{color:var(--yellow);font:42px/1 var(--display)}.title{color:#f0f2e9;font:26px var(--display)}.meta{margin-top:7px;color:var(--ink-soft);font:11px var(--mono);letter-spacing:.06em;text-transform:uppercase}.status{padding:9px 11px;background:var(--lime);color:var(--ink);font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase}.homework-toggle{padding:8px 10px;border:1px solid var(--lime);background:transparent;color:var(--lime);font:10px var(--mono);letter-spacing:.05em;text-transform:uppercase;cursor:pointer}.homework-toggle:hover,.homework-item.is-complete .homework-toggle{background:var(--lime);color:var(--ink)}.note{margin-top:20px;color:var(--ink-soft);font:11px var(--mono)}footer{padding:0 24px 50px;text-align:center;color:var(--ink-soft);font-size:13px}@media(max-width:600px){.site-nav{top:12px;width:max-content;max-width:calc(100% - 24px)}.site-nav a{padding:9px 8px;font-size:10px}main{width:min(100% - 36px,540px);padding-top:130px}.homework-item{grid-template-columns:48px 1fr;gap:14px;padding:18px}.number{font-size:32px}.title{font-size:21px}.status,.homework-toggle{grid-column:2;justify-self:start}}
-.homework-person{display:flex;align-items:center;gap:14px;margin:0 0 28px;color:var(--soft);font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase}.homework-person select{min-width:220px;padding:12px 14px;border:1px solid rgba(237,243,176,.4);background:var(--ink);color:#f0f2e9;font:13px var(--body);letter-spacing:0;text-transform:none}.homework-person select:focus{outline:2px solid var(--yellow);outline-offset:2px}
-.homework-list{display:grid;gap:14px}.homework-date{margin:42px 0 10px;color:var(--yellow);font:18px var(--mono);letter-spacing:.06em;text-transform:uppercase}.homework-date:first-child{margin-top:0}.homework-item{display:grid;grid-template-columns:80px 1fr auto auto;align-items:center;gap:18px;padding:24px;border:1px solid rgba(237,243,176,.35);background:rgba(33,66,63,.55)}.homework-item:nth-of-type(even){background:rgba(229,109,79,.16)}.homework-item.is-complete{opacity:.65}.number{color:var(--yellow);font:42px/1 var(--display)}.title{color:#f0f2e9;font:26px var(--display)}.meta{margin-top:7px;color:var(--ink-soft);font:11px var(--mono);letter-spacing:.06em;text-transform:uppercase}.assignment-copy{margin-top:12px;color:var(--soft);font-size:14px;line-height:1.65}.assignment-copy ul,.assignment-copy ol{margin:8px 0 0;padding-left:22px}.assignment-copy li{margin:4px 0}.assignment-copy details{margin-top:14px;color:var(--soft)}.assignment-copy summary{color:var(--lime);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}.status{padding:9px 11px;background:var(--lime);color:var(--ink);font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase}.homework-toggle{padding:8px 10px;border:1px solid var(--lime);background:transparent;color:var(--lime);font:10px var(--mono);letter-spacing:.05em;text-transform:uppercase;cursor:pointer}.homework-toggle:hover,.homework-item.is-complete .homework-toggle{background:var(--lime);color:var(--ink)}.note{margin-top:20px;color:var(--ink-soft);font:11px var(--mono)}footer{padding:0 24px 50px;text-align:center;color:var(--ink-soft);font-size:13px}@media(max-width:600px){.site-nav{top:12px;width:max-content;max-width:calc(100% - 24px)}.site-nav a{padding:9px 8px;font-size:10px}main{width:min(100% - 36px,540px);padding-top:130px}.homework-person{align-items:flex-start;flex-direction:column;gap:8px}.homework-person select{width:100%}.homework-item{grid-template-columns:48px 1fr;gap:14px;padding:18px}.number{font-size:32px}.title{font-size:21px}.status,.homework-toggle{grid-column:2;justify-self:start}}
+  :root{
+    --bg:#FDFCF8; --surface:#FFFFFF; --surface-2:#F2F4EE; --ink:#13261F; --ink-soft:#5E7469; --ink-faint:#5E7469;
+    --line:#E6E9E0; --line-strong:#D4DDD0; --forest:#0F201A; --forest-2:#1C382C;
+    --sage:#9EBCA3; --sage-light:#E4ECE1; --lime:#D9E08A; --sun:#EFC85E;
+    --r:18px; --r-sm:12px; --r-pill:999px;
+    --font-display:'Instrument Serif', serif; --font-body:'Inter', system-ui, sans-serif; --font-mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;}
+  html::-webkit-scrollbar{width:6px;height:6px} html::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:99px}
+  ::selection{background:var(--sage-light); color:var(--forest)}
+  body{margin:0; min-height:100vh; background:var(--bg); color:var(--ink); font-family:var(--font-body); overflow-x:hidden; -webkit-font-smoothing:antialiased}
+  @media (prefers-reduced-motion: reduce){ *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important} .loader{display:none !important}}
+  .loader{position:fixed; inset:0; z-index:100; background:var(--forest); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; transition:transform .9s cubic-bezier(.76,0,.24,1)}
+  .loader.out{transform:translateY(-100%)} .loader__leaf{width:56px;height:56px;color:var(--lime); animation:loaderLeaf 1.6s ease-in-out infinite}
+  @keyframes loaderLeaf{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(4deg) scale(1.04)}}
+  .loader__line{width:120px;height:1px;background:rgba(255,255,255,.14);overflow:hidden;border-radius:99px}
+  .loader__bar{height:100%;width:0%;background:var(--lime);animation:loaderBar 1.4s cubic-bezier(.16,1,.3,1) forwards}
+  @keyframes loaderBar{to{width:100%}} .loader__text{font:10px var(--font-mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.52)}
+  .progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:20;pointer-events:none}.progress__bar{height:100%;width:100%;background:var(--forest);transform-origin:left;transform:scaleX(0)}
+  .cursor{position:fixed;width:18px;height:18px;border-radius:50%;border:1px solid rgba(15,32,26,.18);background:rgba(15,32,26,.04);pointer-events:none;z-index:50;opacity:0;mix-blend-mode:multiply;display:none;transition:opacity .3s, transform .15s}
+  @media (hover:hover) and (pointer:fine){.cursor{display:block}} .cursor.hover{transform:scale(2.6);background:rgba(158,188,163,.22);border-color:rgba(158,188,163,.6)}
+  .motes{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+  .mote{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--sage);opacity:0;animation:moteFloat 10s ease-in-out infinite}
+  @keyframes moteFloat{0%{opacity:0;transform:translate3d(0,0,0)}10%{opacity:.42}90%{opacity:.22}100%{opacity:0;transform:translate3d(18px,-42px,0)}}
+  .site-nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:12;display:flex;align-items:center;gap:4px;padding:6px;background:rgba(253,252,248,.86);backdrop-filter:blur(16px) saturate(1.1);border:1px solid rgba(19,38,31,.07);border-radius:999px;box-shadow:0 8px 24px -12px rgba(15,32,26,.18)}
+  .site-nav.scrolled{box-shadow:0 16px 36px -16px rgba(15,32,26,.22)}
+  .site-nav a{padding:9px 16px;border-radius:999px;font:500 11px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink-soft);transition:background .22s,color .22s}
+  .site-nav a:hover{color:var(--ink);background:var(--surface-2)} .site-nav a[aria-current="page"]{background:var(--forest);color:#fff;box-shadow:0 4px 12px -6px rgba(15,32,26,.6)}
+  .site-nav__dot{width:6px;height:6px;border-radius:50%;background:var(--sage);display:inline-block;margin-right:6px;vertical-align:middle;opacity:0;transform:scale(.6);transition:opacity .2s,transform .2s}
+  .site-nav a[aria-current="page"] .site-nav__dot{opacity:1;transform:scale(1);background:var(--lime)}
+
+  .wrap{width:min(1120px, calc(100% - 48px));margin:0 auto;position:relative;z-index:2}
+  @media(max-width:600px){.wrap{width:min(100% - 32px,560px)}}
+
+  /* header */
+  .page-hero{
+    padding:132px 0 36px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(820px 520px at 78% 8%, rgba(158,188,163,.16), transparent 62%),
+      radial-gradient(640px 420px at 12% 18%, rgba(217,224,138,.10), transparent 60%),
+      var(--bg);
+  }
+  .page-hero__grid{position:absolute;inset:0;background-image:linear-gradient(rgba(19,38,31,.04)1px,transparent 1px),linear-gradient(90deg,rgba(19,38,31,.04)1px,transparent 1px);background-size:44px 44px;mask:radial-gradient(820px 520px at 50% 20%, black 40%, transparent 75%);-webkit-mask:radial-gradient(820px 520px at 50% 20%, black 40%, transparent 75%);pointer-events:none;opacity:.5}
+  .page-hero__leaf{position:absolute;pointer-events:none;opacity:.95;will-change:transform}
+  .page-hero__leaf--1{left:-2%;top:10%;width:320px} .page-hero__leaf--2{right:-3%;top:8%;width:360px;transform:scaleX(-1);opacity:.55}
+  @media(max-width:700px){.page-hero__leaf{opacity:.38}}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font:500 11px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--moss);padding:8px 12px;background:var(--sage-light);border:1px solid var(--line);border-radius:999px}
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--forest);box-shadow:0 0 0 4px rgba(15,32,26,.08)}
+  h1{font-family:var(--font-display);font-size:clamp(54px,10vw,124px);line-height:.86;letter-spacing:-.05em;color:var(--forest);margin:18px 0 0}
+  h1 em{font-style:italic;color:var(--moss);font-weight:400}
+  h1 .line-mask{display:block;overflow:hidden;padding-bottom:.06em}
+  h1 .line-mask span{display:block;transform:translateY(105%);transition:transform .9s cubic-bezier(.16,1,.3,1)}
+  h1.ready .line-mask span{transform:translateY(0)}
+  .lead{max-width:56ch;margin:18px 0 0;font-size:17px;line-height:1.7;color:var(--ink-soft)}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .hero-stat{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line)}
+  .hero-stat__item{flex:1 1 160px;min-width:140px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:14px}
+  .hero-stat__label{font:600 10px var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+  .hero-stat__value{margin-top:8px;font:700 22px var(--font-body);letter-spacing:-.02em;color:var(--forest)}
+  .hero-stat__hint{margin-top:4px;font:400 11px var(--font-mono);color:var(--ink-soft)}
+
+  .homework-person{display:flex;align-items:center;gap:14px;margin:28px 0 8px;font:500 11px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);flex-wrap:wrap}
+  .homework-person select{
+    min-width:240px;padding:12px 16px;border-radius:999px;
+    border:1px solid var(--line);background:#fff;color:var(--ink);
+    font:600 13px var(--font-body);letter-spacing:0;text-transform:none;
+    box-shadow:0 6px 16px -12px rgba(15,32,26,.16);
+    transition:border-color .2s, box-shadow .2s;
+  }
+  .homework-person select:focus{outline:none;border-color:var(--forest);box-shadow:0 0 0 3px rgba(15,32,26,.1)}
+  .homework-person select:hover{border-color:var(--line-strong)}
+
+  main{padding:22px 0 64px;position:relative;z-index:2}
+  .homework-list{display:grid;gap:14px}
+  .homework-date{
+    margin:36px 0 12px; display:flex; align-items:center; gap:12px;
+    font:700 12px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--forest);
+  }
+  .homework-date::before{content:"";width:28px;height:1px;background:var(--line-strong)}
+  .homework-date::after{content:"";flex:1;height:1px;background:var(--line)}
+  .homework-date:first-child{margin-top:0}
+  .homework-item{
+    display:grid;grid-template-columns:78px 1fr auto auto;gap:18px;align-items:center;
+    padding:20px 22px;background:#fff;border:1px solid var(--line);border-radius:16px;
+    box-shadow:0 10px 24px -18px rgba(15,32,26,.2);
+    transition:transform .28s cubic-bezier(.16,1,.3,1), box-shadow .28s, border-color .2s, opacity .2s;
+  }
+  .homework-item:hover{transform:translateY(-2px);box-shadow:0 18px 32px -18px rgba(15,32,26,.22);border-color:var(--line-strong)}
+  .homework-item.is-complete{opacity:.62}
+  .homework-item.is-complete .number{color:var(--ink-faint)}
+  .homework-item.is-complete .title{text-decoration:line-through;text-decoration-color:var(--line-strong);text-decoration-thickness:1.5px}
+  .number{color:var(--forest);font:42px/1 var(--font-display);letter-spacing:-.04em}
+  .title{font-family:var(--font-display);font-size:22px;line-height:1;color:var(--forest);letter-spacing:-.02em}
+  .meta{margin-top:6px;color:var(--ink-faint);font:600 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase}
+  .assignment-copy{margin-top:12px;color:var(--ink-soft);font-size:14px;line-height:1.65}
+  .assignment-copy ul,.assignment-copy ol{margin:8px 0 0;padding-left:22px}
+  .assignment-copy li{margin:4px 0}
+  .assignment-copy details{margin-top:14px;padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px}
+  .assignment-copy summary{font:700 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--forest);cursor:pointer;list-style:none}
+  .assignment-copy summary::-webkit-details-marker{display:none}
+  .assignment-copy summary::after{content:" +";color:var(--moss)}
+  .assignment-copy details[open] summary::after{content:" −"}
+  .status{
+    padding:8px 12px;border-radius:999px;background:var(--lime);color:var(--forest);
+    font:700 10px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;
+    border:1px solid rgba(15,32,26,.08); white-space:nowrap; align-self:center;
+    transition:background .2s, color .2s;
+  }
+  .homework-item.is-complete .status{background:var(--forest);color:#fff}
+  .homework-toggle{
+    padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--forest);
+    font:700 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+    transition:background .2s, color .2s, border-color .2s, transform .2s;
+  }
+  .homework-toggle:hover{border-color:var(--forest);background:var(--forest);color:#fff;transform:translateY(-1px)}
+  .homework-item.is-complete .homework-toggle{background:var(--forest);color:#fff;border-color:var(--forest)}
+  @media(max-width:760px){
+    .homework-item{grid-template-columns:52px 1fr;gap:14px;padding:18px}
+    .number{font-size:34px}
+    .title{font-size:20px}
+    .status, .homework-toggle{grid-column:2;justify-self:start}
+  }
+
+  .note{margin-top:22px;padding:16px 18px;background:#fff;border:1px dashed var(--line-strong);border-radius:12px;font:400 11px var(--font-mono);color:var(--ink-soft);line-height:1.6}
+
+  footer{padding:40px 24px;text-align:center;border-top:1px solid var(--line);background:#fff;margin-top:48px}
+  footer p{margin:0;font:500 12px var(--font-mono);letter-spacing:.06em;color:var(--ink-faint)}
+  footer small{display:block;margin-top:6px;font:400 12px var(--font-body);color:var(--ink-soft)}
+
+  .reveal{opacity:0;transform:translateY(16px)} .reveal.in{opacity:1;transform:translateY(0);transition:opacity .68s cubic-bezier(.16,1,.3,1), transform .68s cubic-bezier(.16,1,.3,1)}
+  .stagger > *{opacity:0;transform:translateY(14px)} .stagger.in > *{opacity:1;transform:translateY(0);transition:opacity .58s cubic-bezier(.16,1,.3,1), transform .58s cubic-bezier(.16,1,.3,1)}
+  .magnetic{display:inline-flex;will-change:transform;transition:transform .22s cubic-bezier(.16,1,.3,1)}
+  .skip{position:fixed; left:16px; top:10px; z-index:110; padding:10px 14px; border-radius:999px; background:var(--forest); color:#fff; font:600 12px var(--font-mono); letter-spacing:.06em; text-transform:uppercase; text-decoration:none; transform:translateY(-120%); transition:transform .2s cubic-bezier(.16,1,.3,1)}
+  .skip:focus{transform:translateY(0)}
+  body{opacity:1; transition:opacity .18s ease}
+  body.page-leaving{opacity:.92}
+  noscript .reveal{opacity:1 !important; transform:none !important}
+  @media (max-width:560px){ .site-nav{top:12px; padding:5px; max-width:calc(100% - 24px); gap:2px} .site-nav a{padding:8px 11px; font-size:10px} .page-hero{padding-top:108px} }
+  footer{padding:0; background:#fff; border-top:1px solid var(--line); margin-top:48px}
+  footer .footer__grid{display:grid; grid-template-columns:1.4fr .8fr .8fr; gap:32px; text-align:left; padding:36px 0 28px; border-bottom:1px solid var(--line)}
+  footer a:hover{color:var(--forest) !important; text-decoration:underline; text-underline-offset:3px}
+  .footer__bar{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; padding:18px 0 28px; font:500 11px var(--font-mono); letter-spacing:.06em; color:var(--ink-faint)}
+  @media (max-width:760px){ footer .footer__grid{grid-template-columns:1fr !important; gap:24px !important} }
+  
+  .homework-item--exam{border-color:rgba(201,138,90,.28); background:linear-gradient(180deg,#fff,#FFF8F2)}
+  .homework-item--exam .number{color:var(--clay)}
+  .homework-item--exam .status{background:var(--clay); color:#fff; border-color:rgba(0,0,0,.06)}
+  .homework-item--exam.is-complete .status{background:var(--forest)}
+  .homework-type{margin-top:8px; display:inline-flex; align-items:center; gap:6px; font:700 10px var(--font-mono); letter-spacing:.08em; text-transform:uppercase; padding:4px 8px; border-radius:999px; border:1px solid var(--line)}
+  .homework-type--tugas{background:var(--lime); color:var(--forest); border-color:rgba(15,32,26,.08)}
+  .homework-type--ulangan{background:#FFF1E6; color:#8A4A22; border-color:rgba(201,138,90,.3)}
+  .ulangan-head{margin:48px 0 14px; display:flex; align-items:center; gap:12px; font:700 13px var(--font-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--forest)}
+  .ulangan-head::before{content:""; width:28px; height:2px; background:var(--clay)}
+  .ulangan-head::after{content:""; flex:1; height:1px; background:var(--line)}
+
+  
+  .hw-section{margin:36px 0 0; border:1px solid var(--line); border-radius:18px; background:var(--surface); overflow:hidden; box-shadow:0 14px 28px -20px rgba(15,32,26,.16)}
+  .hw-section__head{display:flex; justify-content:space-between; gap:18px; align-items:flex-start; padding:22px 22px 18px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#fff,#FBFBF8)}
+  .hw-section--ulangan .hw-section__head{background:linear-gradient(180deg,#FFFDF8,#FFF8F2); border-bottom-color:rgba(201,138,90,.18)}
+  .hw-kicker{display:inline-flex; align-items:center; gap:8px; font:700 11px var(--font-mono); letter-spacing:.14em; text-transform:uppercase; color:var(--forest); padding:6px 10px; border-radius:999px; background:var(--lime); border:1px solid rgba(15,32,26,.08)}
+  .hw-kicker--clay{background:#FFF1E6; color:#8A4A22; border-color:rgba(201,138,90,.3)}
+  .hw-kicker .dot{width:6px; height:6px; border-radius:50%; background:var(--forest)}
+  .hw-kicker--clay .dot{background:#C98A5A}
+  .hw-title{margin:10px 0 0; font-family:var(--font-display); font-size:28px; line-height:.95; letter-spacing:-.02em; color:var(--forest)}
+  .hw-desc{margin:8px 0 0; font-size:13px; line-height:1.6; color:var(--ink-soft); max-width:42ch}
+  .hw-badge{min-width:44px; height:44px; display:grid; place-items:center; border-radius:50%; background:var(--forest); color:#fff; font:700 14px var(--font-mono); flex:0 0 auto}
+  .hw-badge--clay{background:#C98A5A}
+  .hw-section .homework-list{padding:18px; display:grid; gap:14px; background:var(--bg)}
+  @media (max-width:760px){ .hw-section__head{flex-direction:column} }
+
+  a:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--forest);outline-offset:2px}
 </style>
 </head>
 <body>
-<nav class="site-nav" aria-label="Navigasi utama"><a href="social-media.html">Social Media</a><a href="index.html">Profile</a><a href="homework.html" aria-current="page">Homework</a></nav>
-<main>
-  <p class="eyebrow">Ruang Tugas / X.2</p>
-  <h1>Homework</h1>
-  <p class="lead">Catatan tugas kelas X.2 dalam satu tempat.</p>
-  <label class="homework-person" for="homework-person">List untuk
+<a class="skip" href="#main">Lewati ke konten</a>
+<noscript><style>.reveal{opacity:1 !important; transform:none !important}</style></noscript>
+<div class="loader" id="loader"><svg class="loader__leaf" viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 6 7 6 12.5C6 16.64 8.69 20 12 20C15.31 20 18 16.64 18 12.5C18 7 12 2 12 2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 20V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M9.2 11.5 L12 9.2 L14.8 11" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/></svg><div class="loader__line"><div class="loader__bar"></div></div><div class="loader__text">Homework</div></div>
+<div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+<div class="cursor" id="cursor"></div>
+<div class="motes" id="motes"></div>
+
+<header><nav class="site-nav" id="siteNav" aria-label="Navigasi utama"><a href="social-media.html"><span class="site-nav__dot"></span>Social Media</a><a href="index.html"><span class="site-nav__dot"></span>Profile</a><a href="homework.html" aria-current="page"><span class="site-nav__dot"></span>Homework</a></nav></header>
+
+<section class="page-hero">
+  <div class="page-hero__grid"></div>
+  <svg class="page-hero__leaf page-hero__leaf--1 parallax" data-speed="0.14" viewBox="0 0 360 520" fill="none" aria-hidden="true">
+    <path d="M0 18 C 60 30, 42 92, 96 138 C 138 184, 96 258, 160 340 C 196 404, 154 470, 210 520" stroke="#9EBCA3" stroke-width="2.4" stroke-linecap="round" opacity=".9"/>
+    <ellipse cx="72" cy="54" rx="28" ry="14" fill="#DDE8DB" transform="rotate(-28 72 54)"/>
+    <ellipse cx="112" cy="132" rx="32" ry="16" fill="#C5D9C1" transform="rotate(18 112 132)"/>
+    <ellipse cx="148" cy="228" rx="26" ry="13" fill="#E4ECE1" transform="rotate(-16 148 228)"/>
+  </svg>
+  <svg class="page-hero__leaf page-hero__leaf--2 parallax" data-speed="0.08" viewBox="0 0 360 520" fill="none" aria-hidden="true">
+    <path d="M0 18 C 60 30, 42 92, 96 138 C 138 184, 96 258, 160 340 C 196 404, 154 470, 210 520" stroke="#9EBCA3" stroke-width="2.4" stroke-linecap="round" opacity=".9"/>
+    <ellipse cx="72" cy="54" rx="28" ry="14" fill="#DDE8DB" transform="rotate(-28 72 54)"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow reveal">Ruang Tugas — Archive · 2026</div>
+    <h1 id="pageTitle"><span class="line-mask"><span style="transition-delay:.12s">Home<em>work</em></span></span><span class="line-mask"><span style="transition-delay:.22s">Tertata.</span></span></h1>
+    <p class="lead reveal" style="transition-delay:.32s">Catatan tugas &amp; ulangan X.2 dalam satu herbarium yang rapi. 10 tugas + 5 ulangan harian, 26 Agu–1 Sep — pilih nama untuk melihat progres pribadimu.</p>
+    <div class="hero-stat reveal" style="transition-delay:.38s">
+      <div class="hero-stat__item"><div class="hero-stat__label">Total Tugas</div><div class="hero-stat__value">10</div><div class="hero-stat__hint">9 terjadwal · 1 jangka panjang</div></div>
+      <div class="hero-stat__item"><div class="hero-stat__label">Rentang</div><div class="hero-stat__value">26 Agu — 1 Sep</div><div class="hero-stat__hint">+ 5 ulangan + 3 bulan membaca</div></div>
+      <div class="hero-stat__item"><div class="hero-stat__label">Sistem</div><div class="hero-stat__value">Personal</div><div class="hero-stat__hint">Progress disimpan lokal</div></div>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="wrap">
+  <label class="homework-person reveal" for="homework-person" style="transition-delay:.08s">List untuk
     <select id="homework-person" aria-label="Pilih nama untuk melihat status homework">
       <option value="Ilham">Ilham</option><option value="Aisha">Aisha</option><option value="Qiya">Qiya</option><option value="Aqilla">Aqilla</option><option value="Askhana">Askhana</option><option value="Cenna">Cenna</option><option value="Talita">Talita</option><option value="Chris">Chris</option><option value="Aim">Aim</option><option value="Fahman">Fahman</option><option value="Fajar">Fajar</option><option value="Figlia">Figlia</option><option value="Firly">Firly</option><option value="Gilar">Gilar</option><option value="Apis">Apis</option><option value="Jehan">Jehan</option><option value="Dastan">Dastan</option><option value="Keisha">Keisha</option><option value="Manon">Manon</option><option value="Dimas">Dimas</option><option value="Lian">Lian</option><option value="Irul">Irul</option><option value="Faric">Faric</option><option value="Fadil">Fadil</option><option value="Nabila">Nabila</option><option value="Hafsha">Hafsha</option><option value="Sean">Sean</option><option value="Qonita">Qonita</option><option value="Tsabitah">Tsabitah</option><option value="Zharifah">Zharifah</option>
     </select>
   </label>
-  <section class="homework-list" aria-label="Daftar homework kelas X.2">
-    <h2 class="homework-date">Senin, 24 Agustus 2026</h2>
-    <article class="homework-item"><div class="number">01</div><div><div class="title">English</div><div class="meta">Opini pro dan kontra</div><div class="assignment-copy">Dari 4 pertanyaan, buat 1 paragraf opini dari masing-masing pertanyaan secara berkelompok. Setiap paragraf berisi Thesis, Arguments, dan Reinforcement. Baca PPT yang sudah dikirim dan siapkan statement pro serta kontra.</div><div class="assignment-copy"><ol><li>Should smartphones be allowed in classrooms?</li><li>Is homework necessary for students?</li><li>Should school uniforms be required?</li><li>Is social media good for teenagers?</li></ol></div></div><div class="status">Belum selesai</div></article>
-    <h2 class="homework-date">Selasa, 25 Agustus 2026</h2>
-    <article class="homework-item"><div class="number">02</div><div><div class="title">Biologi</div><div class="meta">Flora dan fauna Indonesia</div><div class="assignment-copy">Print gambar fauna Asiatis, peralihan, dan Australis serta gambar flora endemik. Tulis tangan keterangannya dan tempel di kertas HVS folio. Masukkan ke sheet protector dan business file. Setiap orang harus memiliki pilihan gambar dan susunan yang tidak sama persis.</div><div class="assignment-copy"><details><summary>Lihat ketentuan lengkap</summary><ul><li>Gambar tipe fauna boleh disusun estetis terlebih dahulu dengan ruang untuk keterangan.</li><li>Flora dan fauna endemik boleh sama, tetapi pilihan dan peletakannya tidak boleh sama persis.</li><li>Keterangan wajib ditulis tangan.</li><li>Usahakan jumlah gambar flora dan fauna tidak hanya satu.</li></ul></details></div></div><div class="status">Belum selesai</div></article>
-    <article class="homework-item"><div class="number">03</div><div><div class="title">PAI</div><div class="meta">Presentasi kelompok</div><div class="assignment-copy">Setiap kelompok mempersiapkan yel-yel, ice breaking, penyampaian materi dengan PPT, LKPD/LKM, dan dokumentasi dari proses pembuatan PPT hingga presentasi untuk diunggah ke Instagram kelas. Materi bersumber dari buku 80% dan internet 20% secara opsional.</div><div class="assignment-copy"><details><summary>Lihat peran kelompok</summary><p>Kelompok yang mendapat giliran bertindak sebagai pengajar: menyampaikan materi, memberi tugas, dan mengondisikan kelas.</p></details></div></div><div class="status">Belum selesai</div></article>
-    <article class="homework-item"><div class="number">04</div><div><div class="title">Geografi</div><div class="meta">Peta dan titik ruangan SMANSA</div><div class="assignment-copy">Print 2 gambar peta SMANSA yang akan dikirim, tempel sesuai format, buat titik 60 ruangan, tarik garis dari titik tersebut, lalu tulis nama ruangannya di samping foto.</div><div class="assignment-copy"><details><summary>Lihat daftar 60 ruangan</summary><ol><li>Kantin</li><li>Kamar mandi kantin</li><li>Ruang OSIS</li><li>Lab komputer</li><li>Kopsis</li><li>Toilet umum</li><li>Ruang musik</li><li>Panggung kreasi</li><li>Gudang</li><li>Lapangan</li><li>Jembatan cinta</li><li>Rooftop</li><li>Kamar mandi</li><li>Greenhouse rooftop</li><li>Kolam I ♥ SMANSA</li><li>Perpus, ruang baca, ruang buku</li><li>Sutet</li><li>Gerbang Setu Lio</li><li>Ruang olahraga</li><li>Kamar mandi</li><li>Selasar lapangan</li><li>Mushola wanita, toilet wanita</li><li>Masjid Al-Whusto</li><li>Taman belakang</li><li>Ruang pusgiwa</li><li>Taman belakang, kolam ikan</li><li>Kolam ikan samping mushola</li><li>Gudang</li><li>Dapur</li><li>Toilet guru, karyawan, tamu</li><li>Dapur guru</li><li>Ruang guru</li><li>Aquarium</li><li>Lab IPA</li><li>DPR</li><li>Ruang guru piket</li><li>Tata usaha</li><li>UKS</li><li>Lobby</li><li>Ruang wakil kepala sekolah</li><li>Ruang kepala sekolah</li><li>Multimedia</li><li>Ruang BK</li><li>Lab fisika</li><li>Hotspot area</li><li>Ruang piala</li><li>Ruang prakarya</li><li>Aula</li><li>Titik kumpul</li><li>Taman</li><li>Ruang komite</li><li>Penggandaan</li><li>Toilet</li><li>Pos satpam</li><li>Gerbang utama</li><li>Gerbang samping</li><li>Gerbang belakang</li><li>Toilet bawah tangga</li><li>Parkiran</li><li>Lab bahasa</li></ol></details></div></div><div class="status">Belum selesai</div></article>
-    <h2 class="homework-date">Kamis, 27 Agustus 2026</h2>
-    <article class="homework-item"><div class="number">05</div><div><div class="title">Kimia</div><div class="meta">LKPD</div><div class="assignment-copy">Menyelesaikan LKPD yang sudah diberikan.</div></div><div class="status">Belum selesai</div></article>
-    <h2 class="homework-date">Jumat, 28 Agustus 2026</h2>
-    <article class="homework-item"><div class="number">06</div><div><div class="title">Seni Budaya</div><div class="meta">Gambar buah dan objek</div><div class="assignment-copy">Menyelesaikan gambar buah dan objek. Jika belum selesai, dapat dilanjutkan pada pertemuan berikutnya.</div></div><div class="status">Belum selesai</div></article>
-    <article class="homework-item"><div class="number">07</div><div><div class="title">Pendidikan Pancasila</div><div class="meta">Presentasi kelompok</div><div class="assignment-copy">Presentasi kelompok sesuai urutan materi. Persiapkan sebaik mungkin. Durasi presentasi maksimal 30 menit. Materi dapat dilihat di PPT yang sudah dikirim.</div></div><div class="status">Belum selesai</div></article>
-    <h2 class="homework-date">Lainnya</h2>
-    <article class="homework-item"><div class="number">08</div><div><div class="title">Bahasa Indonesia</div><div class="meta">Deadline: 3 bulan</div><div class="assignment-copy">Membaca novel karya Dee Lestari, Andrea Hirata, Pramoedya Ananta Toer, Tere Liye, Laila S Chudori, Ahmad Tohari, Okky Madasari, atau A. Fuadi. Novel akan dipresentasikan dalam 3 bulan. Tempel foto ukuran 3×4, 4×6, atau yang terlihat jelas di sampul buku tulis.</div></div><div class="status">Belum selesai</div></article>
+
+  <section class="hw-section hw-section--tugas reveal" aria-labelledby="tugas-title">
+    <div class="hw-section__head">
+      <div>
+        <div class="hw-kicker"><span class="dot"></span> Tugas · 10 tugas</div>
+        <h2 id="tugas-title" class="hw-title">Tugas</h2>
+        <p class="hw-desc">Jadwal pengerjaan, karya, dan presentasi — dikelompokkan per tanggal. Tandai selesai per nama, tersimpan lokal.</p>
+      </div>
+      <span class="hw-badge" aria-hidden="true">10</span>
+    </div>
+    <div class="homework-list" aria-label="Daftar tugas">
+      <h3 class="homework-date">Rabu, 26 Agustus 2026</h3>
+      <article class="homework-item reveal"><div class="number">01</div><div><div class="title">Matematika</div><div class="meta">Menyelesaikan latihan soal · Bawa kertas berpetak</div><div class="assignment-copy">Selesaikan latihan soal sesuai instruksi guru dan bawa kertas berpetak ke kelas untuk pengerjaan.</div></div><div class="status">Belum selesai</div></article>
+
+      <h3 class="homework-date">Kamis, 27 Agustus 2026</h3>
+      <article class="homework-item reveal"><div class="number">02</div><div><div class="title">Sejarah</div><div class="meta">Quiz kelompok · Materi: guna sejarah</div><div class="assignment-copy">Quiz kelompok dengan materi guna sejarah. Pahami fungsi dan manfaat sejarah dalam kehidupan.</div></div><div class="status">Belum selesai</div></article>
+      <article class="homework-item reveal"><div class="number">03</div><div><div class="title">Kimia</div><div class="meta">LKPD</div><div class="assignment-copy">Menyelesaikan LKPD yang sudah diberikan. Bawa dan kumpulkan sesuai jadwal.</div></div><div class="status">Belum selesai</div></article>
+
+      <h3 class="homework-date">Jumat, 28 Agustus 2026</h3>
+      <article class="homework-item reveal"><div class="number">04</div><div><div class="title">Seni Budaya</div><div class="meta">Gambar buah dan objek</div><div class="assignment-copy">Menyelesaikan gambar buah dan objek. Jika belum selesai dapat dilanjutkan pada pertemuan berikutnya.</div></div><div class="status">Belum selesai</div></article>
+      <article class="homework-item reveal"><div class="number">05</div><div><div class="title">Pendidikan Pancasila</div><div class="meta">Presentasi kelompok · Maks. 30 menit</div><div class="assignment-copy">Presentasi kelompok sesuai urutan materi. Setiap kelompok dipersiapkan sebaik mungkin. Durasi maksimal 30 menit per kelompok. Materi dapat dilihat di PPT yang sudah dikirim.</div></div><div class="status">Belum selesai</div></article>
+
+      <h3 class="homework-date">Sabtu, 29 Agustus 2026</h3>
+      <article class="homework-item reveal"><div class="number">06</div><div><div class="title">Sosiologi</div><div class="meta">Infografis fenomena sosial</div><div class="assignment-copy">Membuat infografis berisi fenomena sosial. Info lengkap akan menyusul lewat PPT yang akan dikirim.</div></div><div class="status">Belum selesai</div></article>
+
+      <h3 class="homework-date">Senin, 31 Agustus 2026</h3>
+      <article class="homework-item reveal"><div class="number">07</div><div><div class="title">English</div><div class="meta">Praktik debat</div><div class="assignment-copy">Praktik debat sesuai pembagian kelompok/topik yang telah ditentukan.</div></div><div class="status">Belum selesai</div></article>
+
+      <h3 class="homework-date">Selasa, 1 September 2026</h3>
+      <article class="homework-item reveal"><div class="number">08</div><div><div class="title">PAI</div><div class="meta">Presentasi kelompok · Bertindak sebagai pengajar</div><div class="assignment-copy">Masing-masing kelompok mempresentasikan materi dengan kelengkapan:</div><div class="assignment-copy"><ol><li>Yel-yel</li><li>Ice breaking</li><li>Penyampaian materi dengan PPT</li><li>LKPD/LKM (TTS, ular tangga, essay, pilihan ganda, kahoot/wayground, dls.)</li><li>Dokumentasi dari awal proses pembuatan PPT hingga presentasi — di-upload di IG kelas</li><li>Kelompok yang gilirannya tampil bertindak sebagai <em>pengajar</em> (menyampaikan materi, memberi tugas, mengondisikan kelas)</li></ol></div><div class="assignment-copy"><details><summary>Sumber materi</summary><p>Materi harus bersumber dari buku 80% dan internet 20% (opsional) — overall berporos pada buku pokok.</p></details></div></div><div class="status">Belum selesai</div></article>
+      <article class="homework-item reveal"><div class="number">09</div><div><div class="title">Geografi</div><div class="meta">Print peta &amp; titik 60 ruangan SMANSA</div><div class="assignment-copy">Print 2 gambar maps SMANSA yang akan dikirim, tempel sesuai format yang juga akan dikirim. Buat titik untuk 60 ruangan, tarik garis, lalu tulis nama ruangan di samping foto.</div><div class="assignment-copy"><details><summary>Lihat daftar 60 ruangan</summary><ol><li>Lobby</li><li>DPR</li><li>Pos satpam</li><li>R. Guru</li><li>TU</li><li>R. Wakasek</li><li>R. Penggandaan</li><li>UKS</li><li>R. Kepsek</li><li>R. Piket</li><li>R. Piala</li><li>Pantry</li><li>Dapur</li><li>T. Guru &amp; Staf</li><li>R. BK</li><li>R. Musik</li><li>Kopsis</li><li>Greenhouse</li><li>Lab. Komp</li><li>Rooftop</li><li>Komite</li><li>Pankreas</li><li>Jacin</li><li>Gerbang Masuk</li><li>Kantin</li><li>Al-Wushto</li><li>Al-Wusthi</li><li>T. Laki-laki</li><li>R. Olahraga</li><li>Pusgiwa</li><li>Lapangan</li><li>We ❤️ SMANSA</li><li>R. Baca</li><li>Gerbang Lio</li><li>Podium</li><li>Selasar</li><li>Gudang</li><li>R. OSIS</li><li>Gerbang Sampah</li><li>Taman Literasi</li><li>Lab. Bahasa</li><li>Kolam Depan Al-Wustho</li><li>Multimedia</li><li>Lab. Biologi</li><li>Lab. Kimia</li><li>Lab. Fisika</li><li>Toilet Depan X 4</li><li>R. Server</li><li>Parkiran Mobil</li><li>Parkiran Motor Guru</li><li>Tribun</li><li>Tangga MIPA</li><li>T. Rooftop</li><li>T. Samping Kopsis</li><li>R. Penyimpanan Buku</li><li>Gerbang Samping</li><li>Gerbang Utama</li><li>Halte</li><li>Toilet Bawah XI</li><li>Sutet</li></ol></details></div></div><div class="status">Belum selesai</div></article>
+      <article class="homework-item reveal"><div class="number">10</div><div><div class="title">Bahasa Indonesia</div><div class="meta">Membaca novel · 3 bulan · Presentasi</div><div class="assignment-copy">Membaca novel karya Dee Lestari, Andrea Hirata, Pramoedya Ananta Toer, Tere Liye, Laila S Chusori, Ahmad Tohari, Okky Madasari, atau A Fuadi. Dalam 3 bulan akan dipresentasikan.</div><div class="assignment-copy">Untuk sampul, tempel foto (3×4 atau 4×6 atau yang penting terlihat jelas) di cover buku tulis.</div></div><div class="status">Belum selesai</div></article>
+    </div>
   </section>
+
+<section class="hw-section hw-section--ulangan reveal" aria-labelledby="ulangan-title">
+    <div class="hw-section__head">
+      <div>
+        <div class="hw-kicker hw-kicker--clay"><span class="dot"></span> Ulangan Harian · 5 jadwal</div>
+        <h2 id="ulangan-title" class="hw-title">Ulangan Harian</h2>
+        <p class="hw-desc">Jadwal uji. Siapkan rangkuman, LKPD, dan PPT terkait — terpisah dari tugas agar fokus belajar lebih jelas.</p>
+      </div>
+      <span class="hw-badge hw-badge--clay" aria-hidden="true">5</span>
+    </div>
+    <div class="homework-list" aria-label="Daftar ulangan harian">
+      <h3 class="homework-date">Rabu, 26 Agustus 2026</h3>
+      <article class="homework-item homework-item--exam reveal"><div class="number">01</div><div><div class="title">Bahasa Indonesia</div><div class="meta">Ulangan Harian · LHO</div><div class="assignment-copy">Ulangan harian materi Laporan Hasil Observasi (LHO). Pelajari struktur, ciri kebahasaan, dan contoh.</div></div><div class="status">Belum selesai</div></article>
+
+      <h3 class="homework-date">Kamis, 27 Agustus 2026</h3>
+      <article class="homework-item homework-item--exam reveal"><div class="number">02</div><div><div class="title">Kimia</div><div class="meta">Ulangan Harian</div><div class="assignment-copy">Ulangan harian Kimia. Pelajari rangkuman dan LKPD yang telah diberikan.</div></div><div class="status">Belum selesai</div></article>
+
+      <h3 class="homework-date">Senin, 31 Agustus 2026</h3>
+      <article class="homework-item homework-item--exam reveal"><div class="number">03</div><div><div class="title">Matematika</div><div class="meta">Ulangan Harian</div><div class="assignment-copy">Ulangan harian Matematika. Bawa alat tulis dan kertas berpetak bila diperlukan.</div></div><div class="status">Belum selesai</div></article>
+      <article class="homework-item homework-item--exam reveal"><div class="number">04</div><div><div class="title">Ekonomi</div><div class="meta">Ulangan Harian · PPT sudah dikirim</div><div class="assignment-copy">Ulangan harian Ekonomi. Pelajari PPT yang sudah dikirim.</div></div><div class="status">Belum selesai</div></article>
+
+      <h3 class="homework-date">Selasa, 1 September 2026</h3>
+      <article class="homework-item homework-item--exam reveal"><div class="number">05</div><div><div class="title">Geografi</div><div class="meta">Ulangan Harian · Konsep dasar geografi</div><div class="assignment-copy">Ulangan harian Geografi materi konsep dasar geografi.</div></div><div class="status">Belum selesai</div></article>
+    </div>
+  </section>
+
+  <div class="note reveal">Tip: Tandai tugas &amp; ulangan yang selesai — status tersimpan per nama di browser ini. Warna <span style="display:inline-block; padding:2px 6px; border-radius:999px; background:var(--lime); font:700 10px var(--font-mono)">Tugas</span> &amp; <span style="display:inline-block; padding:2px 6px; border-radius:999px; background:#FFF1E6; border:1px solid rgba(201,138,90,.3); font:700 10px var(--font-mono); color:#8A4A22">Ulangan</span> membantu membedakan. Tekan lagi untuk membatalkan.</div>
 </main>
-<footer>Jurnal Petualangan X.2 · 2026/2027</footer>
+
+<footer>
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <div style="font:700 13px var(--font-mono); letter-spacing:.14em; text-transform:uppercase; color:var(--forest)">X.2 ARCHIVE</div>
+        <p style="margin:10px 0 0; font-size:14px; line-height:1.6; color:var(--ink-soft); max-width:36ch">Ruang tugas yang rapi — 10 tugas terkurasi 26 Agu–1 Sep + 5 ulangan harian, status personal per nama.</p>
+        <div style="margin-top:14px; display:inline-flex; gap:8px; align-items:center; font:600 11px var(--font-mono); color:var(--ink-faint)"><span style="width:28px; height:1px; background:var(--line-strong)"></span> SMAN 1 Kota Depok · 2026/2027</div>
+      </div>
+      <nav aria-label="Navigasi footer" style="display:flex; flex-direction:column; gap:10px">
+        <div style="font:700 11px var(--font-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--forest)">Navigasi</div>
+        <a href="index.html" style="font-size:14px; color:var(--ink-soft); text-decoration:none">Profile</a>
+        <a href="homework.html" style="font-size:14px; color:var(--ink-soft); text-decoration:none">Homework</a>
+        <a href="social-media.html" style="font-size:14px; color:var(--ink-soft); text-decoration:none">Social Media</a>
+      </nav>
+      <div style="display:flex; flex-direction:column; gap:10px">
+        <div style="font:700 11px var(--font-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--forest)">Arsip</div>
+        <a href="https://drive.google.com/drive/u/0/folders/134lAMjyFlzvLF10y6uSA33dFxPX-OZRj" target="_blank" rel="noopener" style="font-size:14px; color:var(--ink-soft); text-decoration:none">Google Drive ↗</a>
+        <a href="index.html#ekspedisi" style="font-size:14px; color:var(--ink-soft); text-decoration:none">Jejak Ekspedisi</a>
+        <span style="font:500 11px var(--font-mono); color:var(--ink-faint)">Wali Kelas Bu Ratna</span>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© 2026 X.2 · SMAN 1 Kota Depok</span>
+      <span>Herbarium tugas · Dibuat dengan rapi</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const loader=document.getElementById('loader');
+  const pageTitle=document.getElementById('pageTitle');
+  function dismiss(){ if(loader){loader.classList.add('out'); setTimeout(()=>loader.remove(),900)} if(pageTitle) pageTitle.classList.add('ready'); }
+  if(reducedMotion) dismiss(); else { window.addEventListener('load', ()=> setTimeout(dismiss,700)); setTimeout(dismiss,2100); if(pageTitle) requestAnimationFrame(()=> requestAnimationFrame(()=> pageTitle.classList.add('ready'))); }
+  const motes=document.getElementById('motes');
+  if(motes){ for(let i=0;i<12;i++){ const m=document.createElement('span'); m.className='mote'; m.style.left=(Math.random()*100)+'vw'; m.style.top=(Math.random()*100)+'vh'; m.style.animationDelay=(Math.random()*8)+'s'; m.style.animationDuration=(8+Math.random()*6)+'s'; const s=1.4+Math.random()*2.2; m.style.width=s+'px'; m.style.height=s+'px'; motes.appendChild(m);} }
+  const cursor=document.getElementById('cursor');
+  if(cursor && !reducedMotion && window.matchMedia('(hover:hover)').matches){
+    let mx=0,my=0,cx=0,cy=0; document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.opacity='1'}); document.addEventListener('mouseleave',()=>cursor.style.opacity='0');
+    (function lerp(){ cx+=(mx-cx)*0.14; cy+=(my-cy)*0.14; cursor.style.transform=`translate3d(${cx-9}px,${cy-9}px,0)`; requestAnimationFrame(lerp)})();
+    document.querySelectorAll('a,button,select,.homework-item').forEach(el=>{ el.addEventListener('mouseenter',()=>cursor.classList.add('hover')); el.addEventListener('mouseleave',()=>cursor.classList.remove('hover')); });
+  }
+  const progressBar=document.getElementById('progressBar'); const siteNav=document.getElementById('siteNav'); const parallax=document.querySelectorAll('.parallax');
+  let ticking=false;
+  function onScroll(){
+    const y=window.scrollY; const h=document.documentElement.scrollHeight - window.innerHeight; const p=h>0?Math.min(1,y/h):0;
+    if(progressBar) progressBar.style.transform=`scaleX(${p})`;
+    if(siteNav){ if(y>18) siteNav.classList.add('scrolled'); else siteNav.classList.remove('scrolled'); }
+    if(!reducedMotion) parallax.forEach(el=>{ const s=parseFloat(el.dataset.speed||'0.12'); el.style.transform=`translate3d(0, ${y*s*0.45}px,0) ${el.classList.contains('page-hero__leaf--2')?'scaleX(-1)':''}`});
+    ticking=false;
+  }
+  window.addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(onScroll); ticking=true; }},{passive:true}); onScroll();
+  if(!reducedMotion) document.querySelectorAll('.magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{ const r=btn.getBoundingClientRect(); const x=(e.clientX-r.left-r.width/2)*0.22; const y=(e.clientY-r.top-r.height/2)*0.28; btn.style.transform=`translate3d(${x}px,${y}px,0)`});
+    btn.addEventListener('mouseleave',()=> btn.style.transform='');
+  });
+  const ro=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); if(en.target.classList.contains('stagger')) [...en.target.children].forEach((c,i)=> c.style.transitionDelay=(i*0.07)+'s'); ro.unobserve(en.target); } });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=> ro.observe(el));
+  if(!reducedMotion && motes) document.addEventListener('mousemove',e=>{ const rx=(e.clientX/window.innerWidth-.5)*2, ry=(e.clientY/window.innerHeight-.5)*2; motes.style.transform=`translate3d(${rx*-10}px,${ry*-8}px,0)`; motes.style.transition='transform .5s ease-out'; });
+</script>
 <script src="1.js"></script>
 <script src="2.js"></script>
 </body>
