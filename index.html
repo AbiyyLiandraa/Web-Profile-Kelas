@@ -329,23 +329,28 @@
   }
   @keyframes scrollHint{0%{transform:translateX(-22px)} 100%{transform:translateX(56px)}}
 
-  /* marquee */
+  /* marquee — professional seamless, fade edges, GPU smooth */
   .marquee{
     border-top:1px solid var(--line); border-bottom:1px solid var(--line);
     background:var(--surface); overflow:hidden; white-space:nowrap; position:relative; z-index:2;
+    /* fade so entry/exit is not a hard cut — fixes the “cut” in screenshot */
+    mask: linear-gradient(90deg, transparent 0, black 72px, black calc(100% - 72px), transparent 100%);
+    -webkit-mask: linear-gradient(90deg, transparent 0, black 72px, black calc(100% - 72px), transparent 100%);
   }
   .marquee__track{
-    display:flex; width:max-content; animation:marquee 28s linear infinite;
+    display:flex; width:max-content; will-change:transform;
+    animation:marquee 28s linear infinite;
+    transform:translate3d(0,0,0);
+    backface-visibility:hidden;
   }
-  .marquee:hover .marquee__track{animation-play-state:paused}
-  .marquee__group{display:flex; align-items:center; gap:28px; padding:14px 0; padding-right:28px}
+  .marquee__group{flex:0 0 auto; display:flex; align-items:center; gap:28px; padding:14px 0; padding-right:28px; will-change:transform}
   .marquee__item{
     display:inline-flex; align-items:center; gap:10px;
     font:600 11px var(--font-mono); letter-spacing:.14em; text-transform:uppercase; color:var(--ink);
   }
   .marquee__dot{width:4px; height:4px; border-radius:50%; background:var(--sage)}
   .marquee__item--muted{color:var(--ink-faint); font-weight:500}
-  @keyframes marquee{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+  @keyframes marquee{from{transform:translate3d(0,0,0)} to{transform:translate3d(-25%,0,0)}}
 
   /* sections */
   section{padding:96px 0 32px; position:relative; z-index:2}
@@ -684,6 +689,20 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
     <div class="marquee__group">
+      <span class="marquee__item">X.2 <span class="marquee__dot"></span> SMAN 1 KOTA DEPOK</span>
+      <span class="marquee__item marquee__item--muted">X.2 ARCHIVE</span>
+      <span class="marquee__item">30 SPESIES <span class="marquee__dot"></span> 2026/2027</span>
+      <span class="marquee__item marquee__item--muted">BU RATNA</span>
+      <span class="marquee__item">JUNGLELAND <span class="marquee__dot"></span> EKSPEDISI</span>
+    </div>
+    <div class="marquee__group" aria-hidden="true">
+      <span class="marquee__item">X.2 <span class="marquee__dot"></span> SMAN 1 KOTA DEPOK</span>
+      <span class="marquee__item marquee__item--muted">X.2 ARCHIVE</span>
+      <span class="marquee__item">30 SPESIES <span class="marquee__dot"></span> 2026/2027</span>
+      <span class="marquee__item marquee__item--muted">BU RATNA</span>
+      <span class="marquee__item">JUNGLELAND <span class="marquee__dot"></span> EKSPEDISI</span>
+    </div>
+    <div class="marquee__group" aria-hidden="true">
       <span class="marquee__item">X.2 <span class="marquee__dot"></span> SMAN 1 KOTA DEPOK</span>
       <span class="marquee__item marquee__item--muted">X.2 ARCHIVE</span>
       <span class="marquee__item">30 SPESIES <span class="marquee__dot"></span> 2026/2027</span>
