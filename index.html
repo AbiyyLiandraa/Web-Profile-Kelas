@@ -72,8 +72,8 @@
   noscript .reveal, noscript .stagger > *{opacity:1 !important; transform:none !important}
 
   @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
-    .loader{display:none !important;}
+    html{scroll-behavior:auto}
+    /* motion kept visible on all PCs — reduced only slightly, loader not hidden */
   }
 
   /* loader */
@@ -888,7 +888,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <a href="#beranda" class="totop" id="totop" aria-label="Kembali ke atas">↑</a>
 
 <script>
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducedMotion = false;
 
   // loader
   const loader = document.getElementById('loader');

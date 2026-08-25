@@ -27,7 +27,10 @@
   html::-webkit-scrollbar{width:6px;height:6px} html::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:99px}
   ::selection{background:var(--sage-light);color:var(--forest)}
   body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--font-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-  @media(prefers-reduced-motion: reduce){*{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}.loader{display:none !important}}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    /* motion kept visible on all PCs — reduced only slightly, loader not hidden */
+  }
   .loader{position:fixed;inset:0;z-index:100;background:var(--forest);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:transform .9s cubic-bezier(.76,0,.24,1)}
   .loader.out{transform:translateY(-100%)} .loader__leaf{width:56px;height:56px;color:var(--lime);animation:loaderLeaf 1.6s ease-in-out infinite}
   @keyframes loaderLeaf{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(4deg) scale(1.04)}}
@@ -244,7 +247,7 @@
 </footer>
 
 <script>
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducedMotion = false;
   const loader=document.getElementById('loader'); const pageTitle=document.getElementById('pageTitle');
   function dismiss(){ if(loader){loader.classList.add('out'); setTimeout(()=>loader.remove(),900)} if(pageTitle) pageTitle.classList.add('ready'); }
   if(reducedMotion) dismiss(); else { window.addEventListener('load', ()=> setTimeout(dismiss,700)); setTimeout(dismiss,2100); if(pageTitle) requestAnimationFrame(()=> requestAnimationFrame(()=> pageTitle.classList.add('ready'))); }
